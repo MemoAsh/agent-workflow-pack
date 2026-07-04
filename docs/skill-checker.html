@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Codex SKILL.md Checker</title>
+    <meta
+      name="description"
+      content="Check whether a SKILL.md frontmatter block uses Codex-compatible top-level keys."
+    />
+    <meta property="og:title" content="Codex SKILL.md Checker" />
+    <meta
+      property="og:description"
+      content="Paste a SKILL.md file and check whether its frontmatter is likely compatible with Codex."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://memoash.github.io/agent-workflow-pack/skill-checker.html" />
+    <meta property="og:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Codex SKILL.md Checker" />
+    <meta
+      name="twitter:description"
+      content="Check Codex-compatible SKILL.md frontmatter in the browser."
+    />
+    <meta name="twitter:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <style>
+      :root {
+        --bg: #f7f7f4;
+        --text: #181a1f;
+        --muted: #5c6370;
+        --line: #d9d9d2;
+        --accent: #0f766e;
+        --panel: #ffffff;
+        --bad: #b91c1c;
+        --good: #166534;
+        --warn: #92400e;
+        --code: #101418;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .wrap {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        padding: 16px 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      main {
+        padding: 42px 0 56px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 6vw, 64px);
+        line-height: 1;
+        margin: 0 0 18px;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        color: #2f343b;
+        font-size: 19px;
+        max-width: 780px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 520px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        font: 14px/1.45 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+        color: #edf2f7;
+        background: var(--code);
+        resize: vertical;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .result {
+        border-left: 5px solid var(--line);
+        padding-left: 14px;
+        margin-bottom: 18px;
+      }
+
+      .result.good {
+        border-color: var(--good);
+      }
+
+      .result.warn {
+        border-color: var(--warn);
+      }
+
+      .result.bad {
+        border-color: var(--bad);
+      }
+
+      .status {
+        font-size: 22px;
+        font-weight: 800;
+        margin: 0 0 8px;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      code {
+        background: #edf2f7;
+        padding: 2px 5px;
+        border-radius: 4px;
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      button,
+      .button {
+        min-height: 42px;
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        padding: 0 14px;
+        background: var(--accent);
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .button.secondary,
+      button.secondary {
+        background: transparent;
+        color: var(--accent);
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 820px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <strong>Codex SKILL.md Checker</strong>
+        <span>
+          <a href="./">Agent Workflow Pack</a>
+          ·
+          <a href="https://github.com/MemoAsh/agent-workflow-pack">GitHub</a>
+        </span>
+      </nav>
+    </header>
+    <main class="wrap">
+      <h1>Check SKILL.md frontmatter before Codex rejects it.</h1>
+      <p class="lead">
+        Paste a <code>SKILL.md</code> file. This browser-only checker looks for unsupported top-level frontmatter keys,
+        missing <code>name</code>/<code>description</code>, and common portability risks.
+      </p>
+      <div class="grid">
+        <section>
+          <textarea id="input" spellcheck="false">---
+name: pr-review
+description: Use when reviewing a pull request, diff, branch, or code change for bugs, regressions, missing tests, and release risk.
+argument-hint: "[optional PR number]"
+---
+
+# PR Review Skill
+
+Find behavior risks first. Include file and line evidence.</textarea>
+          <div class="actions">
+            <button id="check">Check</button>
+            <button class="secondary" id="sample">Load clean sample</button>
+          </div>
+        </section>
+        <section class="panel">
+          <div id="result" class="result"></div>
+          <h2>Codex-compatible top-level keys</h2>
+          <ul>
+            <li><code>name</code></li>
+            <li><code>description</code></li>
+            <li><code>allowed-tools</code></li>
+            <li><code>license</code></li>
+            <li><code>metadata</code></li>
+          </ul>
+          <p class="note">
+            This is a pragmatic compatibility check, not an official validator. If your workflow needs cleanup,
+            start with a free fit check.
+          </p>
+          <div class="actions">
+            <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
+              Free fit check
+            </a>
+            <a class="button secondary" href="https://github.com/MemoAsh/agent-workflow-pack/issues/1">
+              Example submission
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script>
+      const allowed = new Set(["name", "description", "allowed-tools", "license", "metadata"]);
+      const required = ["name", "description"];
+      const input = document.getElementById("input");
+      const result = document.getElementById("result");
+
+      function parseFrontmatter(text) {
+        const normalized = text.replace(/\r\n/g, "\n");
+        if (!normalized.startsWith("---\n")) {
+          return { error: "No YAML frontmatter block found at the top of the file.", keys: [] };
+        }
+        const end = normalized.indexOf("\n---", 4);
+        if (end === -1) {
+          return { error: "Opening frontmatter marker found, but closing --- marker is missing.", keys: [] };
+        }
+        const block = normalized.slice(4, end).split("\n");
+        const keys = [];
+        for (const line of block) {
+          if (!line.trim() || line.trim().startsWith("#") || /^\s/.test(line)) continue;
+          const match = line.match(/^([A-Za-z0-9_-]+)\s*:/);
+          if (match) keys.push(match[1]);
+        }
+        return { keys };
+      }
+
+      function check() {
+        const parsed = parseFrontmatter(input.value);
+        if (parsed.error) {
+          render("bad", "Not compatible yet", [parsed.error]);
+          return;
+        }
+        const keys = [...new Set(parsed.keys)];
+        const unsupported = keys.filter((key) => !allowed.has(key));
+        const missing = required.filter((key) => !keys.includes(key));
+        const notes = [];
+        if (missing.length) notes.push(`Missing required key(s): ${missing.join(", ")}.`);
+        if (unsupported.length) notes.push(`Unsupported top-level key(s): ${unsupported.join(", ")}.`);
+        if (keys.length === 0) notes.push("No top-level frontmatter keys were detected.");
+        if (!unsupported.length && !missing.length && keys.length) {
+          notes.push("Frontmatter keys look Codex-compatible.");
+          notes.push("Next check: make sure the description clearly says when the skill should be used.");
+          render("good", "Looks compatible", notes);
+          return;
+        }
+        notes.push("Move unsupported behavior into the skill body or metadata.");
+        render("warn", "Needs cleanup", notes);
+      }
+
+      function render(kind, title, notes) {
+        result.className = `result ${kind}`;
+        result.innerHTML = `<p class="status">${title}</p><ul>${notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}</ul>`;
+      }
+
+      function escapeHtml(value) {
+        return value.replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        })[char]);
+      }
+
+      document.getElementById("check").addEventListener("click", check);
+      document.getElementById("sample").addEventListener("click", () => {
+        input.value = `---\nname: pr-review\ndescription: Use when reviewing a pull request, diff, branch, or code change for bugs, regressions, missing tests, and release risk.\n---\n\n# PR Review Skill\n\nFind behavior risks first. Include file and line evidence.`;
+        check();
+      });
+      check();
+    </script>
+  </body>
+</html>
