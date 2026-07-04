@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask whether your workflow is a fit
+    url: https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml
+    about: Submit one repeated AI-agent workflow for pilot review.
+
