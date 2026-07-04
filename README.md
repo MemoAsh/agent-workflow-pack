@@ -6,6 +6,8 @@ Landing page: https://memoash.github.io/agent-workflow-pack/
 
 Free fit check: https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml
 
+Example fit check submission: https://github.com/MemoAsh/agent-workflow-pack/issues/1
+
 If you keep pasting the same long prompt into Codex, Claude Code, Copilot, Cursor, or another coding agent, that workflow probably belongs in a reusable pack:
 
 - durable repo instructions
