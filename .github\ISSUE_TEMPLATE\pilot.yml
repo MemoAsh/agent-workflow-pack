@@ -1,0 +1,73 @@
+name: Pilot workflow pack
+description: Submit one repeated AI-agent workflow for a paid or pre-paid fit check.
+title: "[Pilot] "
+labels:
+  - pilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit one repeated AI-agent workflow. Keep it narrow.
+
+        Good examples: PR review, bug reproduction, safe edit rules, release notes, QA checks, customer issue triage.
+
+        Do not submit requests involving spam, account abuse, illegal scraping, credential misuse, or platform evasion.
+  - type: dropdown
+    id: tool
+    attributes:
+      label: AI agent/tool
+      options:
+        - Codex
+        - Claude Code
+        - Copilot
+        - Cursor
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Repeated workflow
+      description: What do you keep asking the agent to do?
+      placeholder: "Example: Review PRs and report only behavior risks with file/line evidence."
+    validations:
+      required: true
+  - type: textarea
+    id: current_prompt
+    attributes:
+      label: Current prompt, SOP, or checklist
+      description: Paste what you currently use, even if it is messy.
+    validations:
+      required: true
+  - type: textarea
+    id: always
+    attributes:
+      label: Always-do rules
+      description: What should the agent always do?
+    validations:
+      required: true
+  - type: textarea
+    id: never
+    attributes:
+      label: Never-do rules
+      description: What should the agent never do?
+    validations:
+      required: true
+  - type: textarea
+    id: verify
+    attributes:
+      label: Verification
+      description: What proves the workflow succeeded?
+      placeholder: "Example: Findings include file/line evidence, tests are listed, and restricted files were not edited."
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: This is one narrow repeated workflow, not a full app build.
+          required: true
+        - label: This request does not involve spam, evasion, illegal scraping, or credential misuse.
+          required: true
+
