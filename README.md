@@ -10,6 +10,10 @@ Example fit check submission: https://github.com/MemoAsh/agent-workflow-pack/iss
 
 Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
 
+Claude Code users can copy a workflow directory into `.claude/skills/`.
+Codex users can copy the same workflow into `.codex/skills/`.
+Keep repo-wide rules in `AGENTS.md`; keep repeated task procedures in `SKILL.md`.
+
 If you keep pasting the same long prompt into Codex, Claude Code, Copilot, Cursor, or another coding agent, that workflow probably belongs in a reusable pack:
 
 - durable repo instructions
@@ -108,3 +112,7 @@ If it is a bad fit, I will say that before you pay.
 Open a [free fit check / pilot issue](https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml) with your repeated workflow.
 
 See [service/offer.md](service/offer.md) for scope and pricing.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
