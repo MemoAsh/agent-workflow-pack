@@ -1,0 +1,7 @@
+status,platform,url,topic,pain_signal,reply_draft,posted_at,response,next_action
+draft,GitHub,https://github.com/openai/codex/issues/13288,nested AGENTS.md behavior,instruction hierarchy confusion,thread-specific-replies.md#1,,,"read thread before posting"
+draft,GitHub,https://github.com/anthropics/claude-code/issues/6235,cross-agent AGENTS.md support,tool-specific instruction fragmentation,thread-specific-replies.md#2,,,"read thread before posting"
+draft,GitHub,https://github.com/anthropics/claude-code/issues/22022,agent ignoring rules,passive instructions not enough,thread-specific-replies.md#3,,,"read thread before posting"
+draft,GitHub,https://github.com/openai/codex/issues/5291,SKILL.md support,need reusable task workflows,thread-specific-replies.md#4,,,"read thread before posting"
+draft,GitHub,https://github.com/tmforum-oda/oda-canvas/issues/582,agent skills adoption,org-level workflow packaging,lead-list-initial.md#5,,,"read thread before posting"
+
