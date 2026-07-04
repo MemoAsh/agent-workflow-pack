@@ -2,6 +2,8 @@
 
 Reusable workflow packs for AI coding agents.
 
+Landing page: https://memoash.github.io/agent-workflow-pack/
+
 If you keep pasting the same long prompt into Codex, Claude Code, Copilot, Cursor, or another coding agent, that workflow probably belongs in a reusable pack:
 
 - durable repo instructions
@@ -97,6 +99,6 @@ Send one repeated AI-agent workflow you are tired of rewriting.
 
 If it is a bad fit, I will say that before you pay.
 
-Open a [pilot issue](https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml) with your repeated workflow.
+Open a [free fit check / pilot issue](https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml) with your repeated workflow.
 
 See [service/offer.md](service/offer.md) for scope and pricing.
