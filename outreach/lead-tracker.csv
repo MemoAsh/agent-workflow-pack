@@ -4,4 +4,11 @@ draft,GitHub,https://github.com/anthropics/claude-code/issues/6235,cross-agent A
 draft,GitHub,https://github.com/anthropics/claude-code/issues/22022,agent ignoring rules,passive instructions not enough,thread-specific-replies.md#3,,,"read thread before posting"
 draft,GitHub,https://github.com/openai/codex/issues/5291,SKILL.md support,need reusable task workflows,thread-specific-replies.md#4,,,"read thread before posting"
 draft,GitHub,https://github.com/tmforum-oda/oda-canvas/issues/582,agent skills adoption,org-level workflow packaging,lead-list-initial.md#5,,,"read thread before posting"
-
+draft,GitHub,https://github.com/openai/codex/issues/10067,AGENTS.md variants,wants named workflow-specific agent instruction files,first-20-outreach-plan.md,,,"suggest skill/checklist split and link repo only if useful"
+draft,GitHub,https://github.com/openai/codex/issues/25884,AGENTS.md applied in wrong context,instruction scope and guardrail ambiguity,first-20-outreach-plan.md,,,"suggest verification gates and safe-edit example"
+draft,GitHub,https://github.com/openai/codex/issues/20637,SKILL.md discovery,case-sensitive skill packaging compatibility,first-20-outreach-plan.md,,,"share narrow skill structure checklist"
+draft,GitHub,https://github.com/openai/codex/issues/17344,skill install pattern,canonical skills vs wrapper install failure,first-20-outreach-plan.md,,,"suggest portable pack layout"
+draft,GitHub,https://github.com/anthropics/claude-code/issues/50778,AGENTS.md plus .agents/skills standard,cross-agent portability pain,first-20-outreach-plan.md,,,"share cross-tool workflow pack repo"
+draft,GitHub,https://github.com/microsoft/vscode/issues/256828,Copilot AGENTS.md support,fragmented instruction file ecosystem,first-20-outreach-plan.md,,,"reply with portable repo rules plus task skills split"
+draft,GitHub,https://github.com/OHF-Voice/linux-voice-assistant/discussions/282,project agent instructions,repo wants structured AI coding instructions,first-20-outreach-plan.md,,,"offer concrete checklist and sample repo"
+draft,GitHub,https://github.com/mattpocock/skills/issues/360,Codex SKILL.md compatibility,frontmatter compatibility issue,first-20-outreach-plan.md,,,"share Codex-compatible skill checklist"
