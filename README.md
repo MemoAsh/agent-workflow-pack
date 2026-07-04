@@ -16,18 +16,20 @@ Claude Code users can copy a workflow directory into `.claude/skills/`.
 Codex users can copy the same workflow into `.codex/skills/`.
 Keep repo-wide rules in `AGENTS.md`; keep repeated task procedures in `SKILL.md`.
 
+The top-level `skills/` directory is intentionally indexer-friendly for skill directories and marketplace crawlers.
+
 Quick install examples:
 
 ```bash
 # Claude Code
 cp examples/pr-review-workflow/AGENTS.md ./AGENTS.md
 mkdir -p .claude/skills/pr-review
-cp -R examples/pr-review-workflow/skills/pr-review/* .claude/skills/pr-review/
+cp -R skills/pr-review-workflow/* .claude/skills/pr-review/
 
 # Codex
 cp examples/pr-review-workflow/AGENTS.md ./AGENTS.md
 mkdir -p .codex/skills/pr-review
-cp -R examples/pr-review-workflow/skills/pr-review/* .codex/skills/pr-review/
+cp -R skills/pr-review-workflow/* .codex/skills/pr-review/
 ```
 
 If you keep pasting the same long prompt into Codex, Claude Code, Copilot, Cursor, or another coding agent, that workflow probably belongs in a reusable pack:
@@ -84,6 +86,7 @@ See [examples/pr-review-workflow](examples/pr-review-workflow/README.md) for a s
 
 More examples:
 
+- [Installable PR review skill](skills/pr-review-workflow/SKILL.md)
 - [PR review workflow](examples/pr-review-workflow/README.md)
 - [Safe edit workflow](examples/safe-edit-workflow/README.md)
 
