@@ -8,6 +8,8 @@ Free fit check: https://github.com/MemoAsh/agent-workflow-pack/issues/new?templa
 
 Example fit check submission: https://github.com/MemoAsh/agent-workflow-pack/issues/1
 
+Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
+
 If you keep pasting the same long prompt into Codex, Claude Code, Copilot, Cursor, or another coding agent, that workflow probably belongs in a reusable pack:
 
 - durable repo instructions
