@@ -10,6 +10,8 @@ Example fit check submission: https://github.com/MemoAsh/agent-workflow-pack/iss
 
 Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
 
+Try PR review without local setup: https://memoash.github.io/agent-workflow-pack/try-pr-review.html
+
 Claude Code users can copy a workflow directory into `.claude/skills/`.
 Codex users can copy the same workflow into `.codex/skills/`.
 Keep repo-wide rules in `AGENTS.md`; keep repeated task procedures in `SKILL.md`.

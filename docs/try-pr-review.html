@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Try PR Review Workflow</title>
+    <meta
+      name="description"
+      content="Copy a no-install PR review workflow prompt for Claude Code, Codex, Cursor, Copilot, or another coding agent."
+    />
+    <style>
+      :root {
+        --bg: #f7f7f4;
+        --text: #181a1f;
+        --muted: #5c6370;
+        --line: #d9d9d2;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --panel: #ffffff;
+        --code: #101418;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--accent-dark);
+      }
+
+      .wrap {
+        width: min(960px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.92);
+      }
+
+      nav {
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        font-weight: 700;
+      }
+
+      main {
+        padding: 48px 0;
+      }
+
+      h1 {
+        font-size: clamp(34px, 6vw, 64px);
+        line-height: 1;
+        letter-spacing: 0;
+        margin: 0 0 18px;
+      }
+
+      .lead {
+        max-width: 760px;
+        color: #2f343b;
+        font-size: 19px;
+      }
+
+      .panel {
+        margin-top: 28px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 20px 0;
+      }
+
+      button,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 6px;
+        border: 1px solid var(--text);
+        background: transparent;
+        color: var(--text);
+        text-decoration: none;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button.primary {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 560px;
+        resize: vertical;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: var(--code);
+        color: #edf2f7;
+        font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <div class="brand">Agent Workflow Pack</div>
+        <a href="./">Home</a>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <h1>Try the PR review workflow.</h1>
+      <p class="lead">
+        Copy this prompt into Claude Code, Codex, Cursor, Copilot, or another coding agent with a branch,
+        diff, or pull request. It simulates the reusable workflow before local setup.
+      </p>
+
+      <div class="panel">
+        <div class="actions">
+          <button class="primary" type="button" onclick="copyPrompt()">Copy prompt</button>
+          <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/tree/main/examples/pr-review-workflow">
+            View source files
+          </a>
+        </div>
+        <p class="muted" id="status">No local install required. For repeat use, install the skill from the repo.</p>
+        <textarea id="prompt" spellcheck="false">Use this PR review workflow on the current branch, diff, or pull request.
+
+Goal:
+Find the highest-impact issues in the change. The output is for an engineer deciding whether the PR can merge.
+
+Process:
+1. Read the diff and the surrounding code needed to understand behavior.
+2. Identify changed contracts, data flow, error handling, user-visible behavior, and tests.
+3. List findings first, ordered by severity.
+4. Keep summaries brief.
+
+Finding rules:
+- A finding must describe a concrete risk.
+- A finding must include file and line evidence.
+- Do not include speculative issues without stating the assumption.
+- Do not include style-only comments.
+- If there are no issues, say that clearly and mention residual test risk.
+
+Output format:
+
+## Findings
+
+- [P1/P2/P3] Title
+  File: `path/to/file.ext:line`
+  Issue: What can break and why.
+  Fix direction: The smallest change that addresses it.
+
+## Open Questions
+
+- Question or assumption, if any.
+
+## Verification
+
+- Commands run:
+- Commands not run:
+- Remaining risk:
+
+Start by telling me what diff or PR you inspected. If no diff is available, ask me for one.</textarea>
+      </div>
+    </main>
+
+    <script>
+      async function copyPrompt() {
+        const prompt = document.getElementById("prompt");
+        const status = document.getElementById("status");
+        prompt.select();
+        try {
+          await navigator.clipboard.writeText(prompt.value);
+          status.textContent = "Copied. Paste it into your coding agent with a branch, diff, or PR.";
+        } catch {
+          document.execCommand("copy");
+          status.textContent = "Copied. Paste it into your coding agent with a branch, diff, or PR.";
+        }
+      }
+    </script>
+  </body>
+</html>
