@@ -1,52 +1,71 @@
 # Service Offer
 
-## Pilot
+## Audit Fit Check
 
-Send me one prompt, checklist, or SOP you keep pasting into a coding agent.
-I turn it into repo files your team can reuse.
+Send one narrow AI-agent workflow where pass/fail is not enough because the
+evidence can be incomplete.
 
-Price:
+Examples:
 
-- `$99` for one narrow workflow pack
-- `$299` for one workflow pack, setup guidance, and one revision after testing
+- PR review receipts
+- MCP or tool-call audit logs
+- sensitive-file or safe-edit traces
+- release / QA checks
+- customer issue triage where the agent must show what it verified
+
+The fit check is free. I will say whether a receipt helps, or whether a normal
+prompt/checklist is enough.
+
+## Paid Pilot
+
+- `$99` for one narrow audit workflow pack
+- `$299` for one audit workflow pack, setup guidance, and one revision after testing
 
 ## Deliverables
 
+The exact files depend on the workflow, but a pilot usually includes:
+
 - `README.md`
 - `AGENTS.md` or a project-instruction patch
-- `skills/<workflow>/SKILL.md`
-- `policy/<workflow>.json` or `policy/agent-safety-policy.json` (safety pilots)
-- optional templates
-- optional scripts
+- `skills/<workflow>/SKILL.md` when a repeatable procedure is useful
+- `templates/<receipt>.md` or `templates/<receipt>.json`
 - `verification.md`
-- optional receipt schema block (`checks_run`, `checks_blocked`, `unverified`, `residual_risk`)
+- optional policy file for safety/redaction cases
+- optional tiny script only when a manual checklist would be too easy to skip
+
+The receipt must be able to say:
+
+- what was checked
+- what was skipped
+- what evidence was redacted, truncated, unavailable, or unobservable
+- whether the final result is `pass`, `fail`, or `incomplete`
 
 ## What Counts As Success
 
-You can run the task again without rewriting the original long prompt, and the
-agent has to report what it checked, skipped, and could not verify.
+The next run is easier to trust because a reviewer can see the evidence and the
+gaps without reading the whole conversation.
 
-## Fit
+Success is not "the agent sounds confident." Success is a boring receipt that
+makes overclaiming harder.
 
-Good fit:
+## Good Fit
 
-- repeated PR review prompt
-- repeated bugfix or reproduction SOP
-- repeated QA/release workflow
-- repeated safety rule such as "do not touch generated files or secrets"
+- one repeated workflow or audit surface
 - clear expected output
-- clear rules the agent should follow
+- clear evidence requirements
+- known gaps that should be reported honestly
+- a human reviewer who will use the receipt
 
-Bad fit:
+## Bad Fit
 
 - one-off task
 - vague "make my agent better"
 - full app build
+- generic prompt pack with no verification
 - spam, evasion, illegal scraping, account farming, or credential misuse
 
 I do not provide SOC2/ISO/no-risk guarantees and do not claim security
-certification. The first pilot is intentionally scoped to verifiable, narrow,
-repeatable workflow behavior.
+certification. The pilot is scoped to narrow, verifiable workflow behavior.
 
 ## Payment Timing
 
