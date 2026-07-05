@@ -6,12 +6,12 @@
     <title>Agent Workflow Pack</title>
     <meta
       name="description"
-      content="Turn repeated AI coding-agent prompts into reusable AGENTS.md, SKILL.md, templates, verification checklists, and completion receipts."
+      content="Audit receipts for AI coding-agent runs, MCP tool calls, and PR reviews where pass/fail hides incomplete evidence."
     />
     <meta property="og:title" content="Agent Workflow Pack" />
     <meta
       property="og:description"
-      content="Turn repeated AI coding-agent prompts into reusable AGENTS.md, SKILL.md, templates, verification checklists, and completion receipts."
+      content="Make agent runs say what was checked, what was skipped, and where the evidence is incomplete."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://memoash.github.io/agent-workflow-pack/" />
@@ -20,7 +20,7 @@
     <meta name="twitter:title" content="Agent Workflow Pack" />
     <meta
       name="twitter:description"
-      content="Reusable AGENTS.md and SKILL.md workflow packs for AI coding agents."
+      content="Audit receipts for AI coding-agent runs, MCP tool calls, and PR reviews."
     />
     <meta name="twitter:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
     <style>
@@ -223,34 +223,25 @@
     <main>
       <section class="hero">
         <div class="wrap">
-          <div class="eyebrow">For Codex, Claude Code, Copilot, Cursor, and other AI coding agents</div>
-          <h1>Turn one repeated agent prompt into repo files.</h1>
+          <div class="eyebrow">Audit receipts for AI coding-agent work</div>
+          <h1>Make agent runs say what evidence is incomplete.</h1>
           <p class="lead">
-            Send me the Codex, Claude Code, Cursor, or Copilot prompt you keep pasting.
-            I turn it into a small folder your repo can keep: rules, task steps, output format,
-            and a receipt for what the agent actually checked.
+            I turn repeated agent workflows into repo-owned instructions plus a small receipt:
+            what was checked, what was skipped, and which claims are only partial or unobservable.
+            Useful for PR review, MCP/tool-call audit logs, and safety checks where pass/fail is not enough.
           </p>
           <div class="actions">
             <a class="button primary" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
-              Get a free fit check
+              Get a free audit fit check
+            </a>
+            <a class="button" href="agent-audit-receipts.html">
+              Read the audit receipt note
+            </a>
+            <a class="button" href="https://raw.githubusercontent.com/MemoAsh/agent-workflow-pack/main/examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json">
+              Open JSON template
             </a>
             <a class="button" href="https://x.com/ChenFN01">
               DM on X
-            </a>
-            <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/tree/main/examples/pr-review-workflow">
-              View example
-            </a>
-            <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/tree/main/examples/safe-receipt-workflow">
-              View safety receipt
-            </a>
-            <a class="button" href="try-pr-review.html">
-              Try PR review
-            </a>
-            <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/issues/1">
-              Example submission
-            </a>
-            <a class="button" href="skill-checker.html">
-              Check SKILL.md
             </a>
           </div>
         </div>
@@ -261,16 +252,16 @@
           <h2>What you get back</h2>
           <div class="grid">
             <div class="card">
-              <h3>Drop-in repo files</h3>
+              <h3>Repo-owned instructions</h3>
               <p class="muted">A small folder with AGENTS.md, a task skill, optional templates, and clear boundaries.</p>
             </div>
             <div class="card">
-              <h3>One repeatable task</h3>
-              <p class="muted">PR review, safe edits, release notes, bug reproduction, or another workflow you actually reuse.</p>
+              <h3>One audit target</h3>
+              <p class="muted">PR review, MCP tool calls, safe edits, release notes, or another workflow where evidence matters.</p>
             </div>
             <div class="card">
-              <h3>A final receipt</h3>
-              <p class="muted">The agent has to say what it checked, what it skipped, and what still needs a human.</p>
+              <h3>A receipt that can fail honestly</h3>
+              <p class="muted">The agent has to say what it checked, what it skipped, and when the evidence is incomplete.</p>
             </div>
           </div>
           <pre>repo/
@@ -397,7 +388,7 @@ templates/completion-receipt.md</pre>
               <p class="muted">I tell you whether your prompt is worth packaging, or whether a normal prompt is enough.</p>
             </div>
             <div class="card">
-              <h3>One workflow pack</h3>
+              <h3>One audit workflow pack</h3>
               <p class="price">$99</p>
               <p class="muted">One repeated prompt turned into repo files, a task checklist, and a completion receipt.</p>
             </div>
