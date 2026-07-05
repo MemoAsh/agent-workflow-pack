@@ -134,6 +134,7 @@ More examples:
 - [PR review workflow](examples/pr-review-workflow/README.md)
 - [Safe edit workflow](examples/safe-edit-workflow/README.md)
 - [Safe-receipt workflow (policy + audit schema)](examples/safe-receipt-workflow/README.md)
+- [Audit receipt JSON template](examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json)
 
 ## Service
 
