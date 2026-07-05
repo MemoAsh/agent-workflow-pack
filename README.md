@@ -74,6 +74,7 @@ coverage_gap: output_truncated | hook_missing | upstream_not_observed | none
 
 - Audit receipt article: https://memoash.github.io/agent-workflow-pack/agent-audit-receipts.html
 - MCP team audit receipt: https://memoash.github.io/agent-workflow-pack/mcp-team-audit-receipt.html
+- Fit-check response example: https://memoash.github.io/agent-workflow-pack/fit-check-example.html
 - Try an audit receipt without local setup: https://memoash.github.io/agent-workflow-pack/try-pr-review.html
 - Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
 - Completion receipts: [docs/completion-receipts.md](docs/completion-receipts.md)
