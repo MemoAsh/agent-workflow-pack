@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your agent run needs an audit receipt</title>
+    <meta
+      name="description"
+      content="Why agent runs need small audit receipts with checked evidence, coverage gaps, and incomplete verdicts."
+    />
+    <meta property="og:title" content="Your agent run needs an audit receipt" />
+    <meta
+      property="og:description"
+      content="A longer prompt does not fix thin evidence. Agent runs need receipts that say what was checked, skipped, and incomplete."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://memoash.github.io/agent-workflow-pack/agent-audit-receipts.html" />
+    <meta property="og:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Your agent run needs an audit receipt" />
+    <meta
+      name="twitter:description"
+      content="A practical note on audit receipts, coverage gaps, and incomplete verdicts for coding-agent runs."
+    />
+    <meta name="twitter:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <style>
+      :root {
+        --bg: #f7f7f4;
+        --text: #181a1f;
+        --muted: #5c6370;
+        --line: #d9d9d2;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --panel: #ffffff;
+        --code: #101418;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--accent-dark);
+      }
+
+      .wrap {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.92);
+        position: sticky;
+        top: 0;
+      }
+
+      nav {
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+
+      article {
+        padding: 56px 0;
+      }
+
+      .eyebrow {
+        color: var(--accent-dark);
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 7vw, 68px);
+        line-height: 1;
+        letter-spacing: 0;
+        margin: 0 0 18px;
+      }
+
+      .lead {
+        font-size: 20px;
+        color: #2f343b;
+        max-width: 760px;
+      }
+
+      h2 {
+        font-size: 26px;
+        margin: 44px 0 12px;
+        letter-spacing: 0;
+      }
+
+      p,
+      li {
+        font-size: 17px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      pre {
+        margin: 16px 0 0;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--code);
+        color: #edf2f7;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .callout {
+        margin: 32px 0 0;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 1px solid var(--text);
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 32px 0 48px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 760px) {
+        nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <div class="brand">Agent Workflow Pack</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="try-pr-review.html">Try PR review</a>
+          <a href="completion-receipts.md">Receipts</a>
+          <a href="https://github.com/MemoAsh/agent-workflow-pack">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <article class="wrap">
+      <div class="eyebrow">Audit Receipts</div>
+      <h1>Your agent run needs an audit receipt, not a longer prompt</h1>
+      <p class="lead">
+        A longer prompt does not fix thin evidence. A small receipt makes the
+        run say what it checked, what it skipped, and where the audit is incomplete.
+      </p>
+
+      <p>Most agent workflow failures do not look dramatic.</p>
+      <p>They look like this:</p>
+      <ul>
+        <li>the agent says the PR is fine but never checked the risky file</li>
+        <li>the tool-call log exists but does not prove the hook fired for subagents</li>
+        <li>the audit log is hash-chained but the payload was redacted or truncated</li>
+        <li>the final answer says "done" but the run skipped the one check you cared about</li>
+      </ul>
+
+      <p>The missing piece is usually a small receipt at the end of the run.</p>
+
+      <h2>What I mean by receipt</h2>
+      <p>Not a certificate. Not a full audit system. Just a structured end-of-run claim:</p>
+      <pre>subject: what was checked
+scope: what was in and out
+checks_run: what the agent actually did
+checks_skipped: what it did not do
+evidence: files, commands, logs, or rows inspected
+coverage_gap: why evidence may be incomplete
+verdict: pass | fail | incomplete</pre>
+
+      <p>The important word is <code>incomplete</code>.</p>
+      <p>Without it, a clean-looking result can hide thin evidence.</p>
+
+      <h2>Example: tool-call audit logs</h2>
+      <p>
+        Say an MCP host stores every tool invocation. It is tempting to treat the
+        existence of an audit row as proof. But there are at least three different
+        claims hiding inside that row:
+      </p>
+      <pre>outcome: ok | rejected | error
+redaction_state: full | sanitized | truncated | omitted
+audit_coverage: complete | partial | unobservable</pre>
+
+      <p>Those are not the same thing.</p>
+      <p>
+        A failed tool call can still be audit-complete. A successful tool call can
+        be audit-incomplete if the arguments were omitted, the output was truncated,
+        or a subagent path never emitted events.
+      </p>
+
+      <h2>Example: hash-chained logs</h2>
+      <p>Hash chains are useful. They help prove order and tamper evidence.</p>
+      <p>They do not prove that the log row contains enough evidence.</p>
+      <pre>evidence_mode: full | redacted | metadata_only | unavailable
+input_seen: true | false
+output_seen: true | false
+coverage_gap: actor_unverified | payload_redacted | output_truncated | write_failed
+audit_verdict: pass | fail | incomplete</pre>
+
+      <p>
+        That way a row can be tamper-evident and still honestly say: "this is not
+        enough to call the run clean."
+      </p>
+
+      <h2>Example: PR review agents</h2>
+      <p>For PR review, the receipt can be very small:</p>
+      <pre>files_reviewed:
+  - src/payments/checkout.ts
+  - tests/checkout.test.ts
+
+checks_run:
+  - inspected changed behavior
+  - checked error paths
+  - checked tests touched by the diff
+
+not_checked:
+  - production payment gateway behavior
+  - browser compatibility
+
+verdict: incomplete
+reason: tests were inspected but not executed locally</pre>
+
+      <p>This is better than a confident paragraph.</p>
+      <p>
+        It gives a human reviewer a handle. They can decide whether the missing
+        evidence matters.
+      </p>
+
+      <h2>A good receipt is boring</h2>
+      <p>The receipt should not be clever. It should make it harder for the agent to overclaim.</p>
+      <p>My current rule of thumb:</p>
+      <ul>
+        <li>if the agent cannot name what it checked, it did not check it</li>
+        <li>if the evidence was redacted or truncated, say so</li>
+        <li>if the runtime cannot observe a class of events, mark the audit incomplete</li>
+        <li>if the work is one-off, do not build a framework around it</li>
+      </ul>
+
+      <p>
+        The best receipt is usually a small text or JSON block that your team can
+        read without learning a new tool.
+      </p>
+
+      <div class="callout">
+        <h2>Where I am testing this</h2>
+        <p>
+          I am collecting small examples for AI coding-agent workflows: PR review,
+          tool-call audit logs, MCP server checks, and repeated repo tasks.
+        </p>
+        <p class="muted">
+          The narrow question: when does a receipt make agent work easier to trust,
+          and when is it just ceremony?
+        </p>
+        <div class="actions">
+          <a class="button primary" href="completion-receipts.md">Open receipt examples</a>
+          <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
+            Send a workflow
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <footer>
+      <div class="wrap">
+        Built as a service-first validation project. No spam, evasion, illegal scraping, account abuse, or guaranteed-agent-behavior claims.
+      </div>
+    </footer>
+  </body>
+</html>
