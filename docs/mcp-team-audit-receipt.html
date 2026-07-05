@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MCP team audit receipt</title>
+    <meta
+      name="description"
+      content="A practical receipt shape for team MCP deployments where caller identity, tool allowlists, and audit coverage differ between local stdio and hosted HTTP."
+    />
+    <meta property="og:title" content="MCP team audit receipt" />
+    <meta
+      property="og:description"
+      content="Make MCP team runs say where identity came from, what was authorized, and where audit evidence is incomplete."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://memoash.github.io/agent-workflow-pack/mcp-team-audit-receipt.html" />
+    <meta property="og:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MCP team audit receipt" />
+    <meta
+      name="twitter:description"
+      content="A small audit receipt for team MCP server adoption, shared tokens, and incomplete evidence."
+    />
+    <meta name="twitter:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <style>
+      :root {
+        --bg: #f7f7f4;
+        --text: #181a1f;
+        --muted: #5c6370;
+        --line: #d9d9d2;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --panel: #ffffff;
+        --code: #101418;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--accent-dark);
+      }
+
+      .wrap {
+        width: min(940px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.94);
+        position: sticky;
+        top: 0;
+      }
+
+      nav {
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+
+      article {
+        padding: 56px 0;
+      }
+
+      .eyebrow {
+        color: var(--accent-dark);
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 7vw, 68px);
+        line-height: 1;
+        letter-spacing: 0;
+        margin: 0 0 18px;
+        max-width: 840px;
+      }
+
+      .lead {
+        font-size: 20px;
+        color: #2f343b;
+        max-width: 780px;
+      }
+
+      h2 {
+        font-size: 26px;
+        margin: 44px 0 12px;
+        letter-spacing: 0;
+      }
+
+      p,
+      li {
+        font-size: 17px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .card,
+      .callout {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      pre {
+        margin: 16px 0 0;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--code);
+        color: #edf2f7;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 1px solid var(--text);
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 32px 0 48px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 760px) {
+        nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <div class="brand">Agent Workflow Pack</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="agent-audit-receipts.html">Audit receipts</a>
+          <a href="try-pr-review.html">Try receipt</a>
+          <a href="https://github.com/MemoAsh/agent-workflow-pack">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <article class="wrap">
+      <div class="eyebrow">MCP for Teams</div>
+      <h1>Team MCP adoption needs an audit receipt, not one generic log schema.</h1>
+      <p class="lead">
+        In team deployments, the hard part is not only recording that a tool was called.
+        The hard part is saying where caller identity came from, what policy authorized the call,
+        and where the evidence is incomplete.
+      </p>
+
+      <h2>The split that matters</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Local stdio</h3>
+          <p class="muted">
+            Identity usually comes from the OS process/user boundary. The MCP message does not
+            need to carry `member_id`; attribution is implicit unless the process is wrapped.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Hosted HTTP</h3>
+          <p class="muted">
+            Identity comes from the transport/session boundary: OAuth subject, API gateway identity,
+            or per-member token. The raw MCP `tools/call` frame is still identity-agnostic.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Treating both transports as if the protocol carries the same caller identity creates
+        misleading docs and weak audits. The receipt should make the identity source explicit.
+      </p>
+
+      <h2>Minimal receipt shape</h2>
+      <pre>deployment_model: local_stdio | hosted_http | wrapped_stdio
+workspace_id: acme-prod
+server_id: github-mcp
+operation: tools/call
+tool_name: create_issue
+
+identity:
+  source: os_user | oauth_subject | api_gateway | per_member_token | unknown
+  member_id_present: true
+  upstream_credential: shared | per_user | unknown
+
+authorization:
+  policy_source: gateway | server | client_config | manual | unknown
+  allowlist_match: true | false | not_checked
+  decision: allowed | denied | error | incomplete
+
+evidence:
+  request_seen: true
+  response_seen: true
+  args_recorded: full | redacted | omitted | truncated
+  output_recorded: full | redacted | omitted | truncated
+  tamper_evidence: hash_chain | signed | append_only | none
+
+audit_coverage: complete | partial | unobservable
+coverage_gap:
+  - identity_from_transport_not_mcp
+  - shared_upstream_token
+  - output_truncated
+  - server_side_policy_unobserved
+
+verdict: pass | fail | incomplete</pre>
+
+      <h2>What the receipt prevents</h2>
+      <ul>
+        <li>claiming per-user attribution when identity only exists at the gateway</li>
+        <li>treating a hash-chained row as proof that payload evidence is complete</li>
+        <li>mixing allowlist outcome with audit completeness</li>
+        <li>hiding shared-token risk behind a clean `tools/call` success</li>
+      </ul>
+
+      <h2>Offboarding check</h2>
+      <p>
+        A useful team MCP receipt should make offboarding testable. The question is not
+        "did we rotate a token?" but "which user, server, policy, and upstream credential can
+        still produce a tool call after access is removed?"
+      </p>
+      <pre>offboarding_check:
+  removed_member_id: user_123
+  per_member_token_revoked: true
+  shared_upstream_token_rotated: false
+  cached_sessions_invalidated: true
+  residual_access: unknown
+  verdict: incomplete</pre>
+
+      <div class="callout">
+        <h2>Use this as a fit check</h2>
+        <p>
+          Send one MCP server or team workflow. I will tell you whether a receipt like this
+          would help, what fields are missing, and whether the honest verdict should be
+          `pass`, `fail`, or `incomplete`.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
+            Send an MCP audit fit check
+          </a>
+          <a class="button" href="https://raw.githubusercontent.com/MemoAsh/agent-workflow-pack/main/examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json">
+            Open JSON template
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <footer>
+      <div class="wrap">
+        Built as a service-first validation project. No spam, evasion, illegal scraping, account abuse, or guaranteed-agent-behavior claims.
+      </div>
+    </footer>
+  </body>
+</html>
