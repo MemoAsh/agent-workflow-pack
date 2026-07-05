@@ -1,0 +1,42 @@
+{
+  "receipt_version": "0.1",
+  "subject": {
+    "workflow": "",
+    "skill_path": "",
+    "required_tool": "",
+    "profile": ""
+  },
+  "tool_exposure": {
+    "required_by_step": "",
+    "declared_tier": "",
+    "visible_in_profile": true,
+    "hidden_reason": "",
+    "fallback_available": false
+  },
+  "profile_matrix": [
+    {
+      "profile": "facade|standard|all|custom",
+      "tool_visible": true,
+      "workflow_can_start": true,
+      "expected_failure": ""
+    }
+  ],
+  "checks": {
+    "skill_step_checked": false,
+    "tool_registry_checked": false,
+    "profile_manifest_checked": false,
+    "regression_test_added": false
+  },
+  "evidence": {
+    "files_reviewed": [],
+    "commands_run": [],
+    "ci_or_test_result": ""
+  },
+  "coverage_gaps": [
+    {
+      "gap": "runtime_profile_not_tested|derived_manifest_not_checked|fallback_path_unverified|other",
+      "reason": ""
+    }
+  ],
+  "verdict": "pass|fail|incomplete"
+}
