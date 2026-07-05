@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paid audit workflow pilot</title>
+    <meta
+      name="description"
+      content="Scope, deliverables, and fit rules for the Agent Workflow Pack paid audit workflow pilot."
+    />
+    <meta property="og:title" content="Paid audit workflow pilot" />
+    <meta
+      property="og:description"
+      content="One narrow AI-agent audit workflow turned into instructions, receipt template, and verification notes."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://memoash.github.io/agent-workflow-pack/paid-pilot.html" />
+    <meta property="og:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <style>
+      :root {
+        --bg: #f7f7f4;
+        --text: #181a1f;
+        --muted: #5c6370;
+        --line: #d9d9d2;
+        --accent: #0f766e;
+        --panel: #ffffff;
+        --code: #101418;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: #115e59;
+      }
+
+      .wrap {
+        width: min(960px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.94);
+        position: sticky;
+        top: 0;
+      }
+
+      nav {
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+
+      article {
+        padding: 56px 0;
+      }
+
+      .eyebrow {
+        color: #115e59;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 7vw, 64px);
+        line-height: 1;
+        letter-spacing: 0;
+        margin: 0 0 18px;
+      }
+
+      .lead {
+        font-size: 20px;
+        color: #2f343b;
+        max-width: 780px;
+      }
+
+      h2 {
+        font-size: 26px;
+        margin: 40px 0 12px;
+        letter-spacing: 0;
+      }
+
+      p,
+      li {
+        font-size: 17px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .price {
+        font-size: 34px;
+        font-weight: 800;
+        margin: 8px 0;
+      }
+
+      pre {
+        margin: 16px 0 0;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--code);
+        color: #edf2f7;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 1px solid var(--text);
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 32px 0 48px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <div class="brand">Agent Workflow Pack</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="fit-check-example.html">Fit check example</a>
+          <a href="mcp-team-audit-receipt.html">MCP teams</a>
+          <a href="https://github.com/MemoAsh/agent-workflow-pack">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <article class="wrap">
+      <div class="eyebrow">Paid Pilot</div>
+      <h1>One narrow agent audit workflow, packaged so it can be reused.</h1>
+      <p class="lead">
+        This is for teams already using Codex, Claude Code, Cursor, Copilot, or an MCP/tool-call workflow
+        and wanting the run to leave clearer evidence than "done" or "looks good."
+      </p>
+
+      <h2>Options</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>One audit workflow pack</h3>
+          <p class="price">$99</p>
+          <p class="muted">I turn one narrow repeated workflow into reusable instructions, a receipt template, and verification notes.</p>
+        </div>
+        <div class="card">
+          <h3>Setup + revision</h3>
+          <p class="price">$299</p>
+          <p class="muted">Same pack, plus setup guidance and one revision after you test the workflow in your repo or toolchain.</p>
+        </div>
+      </div>
+
+      <h2>Deliverable</h2>
+      <pre>AGENTS.md or repo-instruction patch
+skills/<workflow>/SKILL.md
+templates/<receipt>.md or .json
+verification.md
+README.md with run and review instructions</pre>
+
+      <h2>Good fit</h2>
+      <ul>
+        <li>PR/code review where "no issues found" needs evidence</li>
+        <li>MCP/tool-call audit log where identity, policy, or coverage can be incomplete</li>
+        <li>safe-edit or sensitive-file workflow where skipped checks must be visible</li>
+        <li>large agent audit reports that need coverage and verifier counts preserved</li>
+      </ul>
+
+      <h2>Bad fit</h2>
+      <ul>
+        <li>full app builds</li>
+        <li>generic prompt packs with no verification boundary</li>
+        <li>growth hacks, spam, scraping, platform evasion, or credential misuse</li>
+        <li>one-off tasks nobody will run again</li>
+      </ul>
+
+      <h2>Start</h2>
+      <p>
+        Open a free fit-check issue first and choose the paid-pilot interest option.
+        I will say whether it is worth paying for before taking the work.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
+          Start with a fit check
+        </a>
+        <a class="button" href="https://x.com/ChenFN01">DM on X</a>
+      </div>
+    </article>
+
+    <footer>
+      <div class="wrap">
+        Built as a service-first validation project. No spam, evasion, illegal scraping, account abuse, or guaranteed-agent-behavior claims.
+      </div>
+    </footer>
+  </body>
+</html>
