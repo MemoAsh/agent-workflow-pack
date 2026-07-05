@@ -210,6 +210,7 @@
         <div class="brand">Agent Workflow Pack</div>
         <div class="nav-links">
           <a href="#examples">Examples</a>
+          <a href="#signals">Signals</a>
           <a href="try-pr-review.html">Try PR review</a>
           <a href="agent-audit-receipts.html">Article</a>
           <a href="skill-checker.html">Checker</a>
@@ -365,14 +366,40 @@ templates/completion-receipt.md</pre>
               <a href="agent-audit-receipts.html">Read article</a>
             </div>
             <div class="card">
-              <h3>Your workflow</h3>
-              <p class="muted">Send one repeated prompt or SOP. I will tell you whether it is worth turning into repo files.</p>
-              <a href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">Submit workflow</a>
+              <h3>Your audit workflow</h3>
+              <p class="muted">Send one audit surface. I will tell you whether a receipt would help, or if a normal checklist is enough.</p>
+              <a href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">Submit audit fit check</a>
             </div>
             <div class="card">
               <h3>SKILL.md checker</h3>
               <p class="muted">Paste frontmatter and catch common Codex compatibility issues before installing a skill.</p>
               <a href="skill-checker.html">Open checker</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="signals">
+        <div class="wrap">
+          <h2>Public signals so far</h2>
+          <p class="muted">
+            These are technical validation threads, not customer logos. I use them to keep the offer grounded.
+          </p>
+          <div class="grid">
+            <div class="card">
+              <h3>MCP audit receipt</h3>
+              <p class="muted">A ReviewMyMCP maintainer asked to iterate on a machine-readable audit receipt shape.</p>
+              <a href="https://github.com/rogue-socket/reviewmymcp/issues/1#issuecomment-4885283874">Open thread</a>
+            </div>
+            <div class="card">
+              <h3>Passive trace coverage</h3>
+              <p class="muted">Traceary adopted the split between sensitive match, access operation, redaction state, and coverage gaps.</p>
+              <a href="https://github.com/duck8823/traceary/issues/1257#issuecomment-4886498153">Open thread</a>
+            </div>
+            <div class="card">
+              <h3>PR contract reports</h3>
+              <p class="muted">Forge discussion helped sharpen the run-level contract fields for agent PR review.</p>
+              <a href="https://github.com/Joncallim/Forge/issues/141#issuecomment-4885081208">Open thread</a>
             </div>
           </div>
         </div>
@@ -385,22 +412,22 @@ templates/completion-receipt.md</pre>
             <div class="card">
               <h3>Free fit check</h3>
               <p class="price">$0</p>
-              <p class="muted">I tell you whether your prompt is worth packaging, or whether a normal prompt is enough.</p>
+              <p class="muted">I tell you whether a receipt would help, or whether a normal prompt/checklist is enough.</p>
             </div>
             <div class="card">
               <h3>One audit workflow pack</h3>
               <p class="price">$99</p>
-              <p class="muted">One repeated prompt turned into repo files, a task checklist, and a completion receipt.</p>
+              <p class="muted">One audit surface turned into reusable instructions, verification notes, and a receipt template.</p>
             </div>
             <div class="card">
               <h3>Setup + revision</h3>
               <p class="price">$299</p>
-              <p class="muted">One workflow pack, setup guidance, and one revision after you test it.</p>
+              <p class="muted">One audit workflow pack, setup guidance, and one revision after you test it.</p>
             </div>
           </div>
           <div class="actions">
             <a class="button primary" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
-              Start with a free fit check
+              Start with a free audit fit check
             </a>
             <a class="button" href="https://x.com/ChenFN01">
               DM on X
