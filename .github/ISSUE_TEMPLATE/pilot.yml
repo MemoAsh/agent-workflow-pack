@@ -13,6 +13,13 @@ body:
 
         The fit check is free. If the workflow is a fit, the paid pilot options are $99 for one narrow audit workflow pack or $299 with setup guidance and one revision.
 
+        What you get back from the free fit check:
+
+        - fit / not-fit judgment
+        - the receipt fields I would use
+        - the evidence gaps that should stay `incomplete`
+        - whether a normal checklist is enough, or whether a paid audit workflow pack is worth building
+
         Do not submit requests involving spam, account abuse, illegal scraping, credential misuse, or platform evasion.
   - type: dropdown
     id: tool
