@@ -1,51 +1,117 @@
 # Agent Workflow Pack
 
-Send one repeated Codex, Claude Code, Cursor, Copilot, or other AI coding-agent
-prompt. Get back a small set of repo files your agent can reuse: rules, task
-steps, output templates, and a receipt of what was actually checked.
+Audit receipts for AI coding-agent work.
+
+Use this when an agent, MCP server, or review workflow can say "done" while the
+evidence is still thin. The receipt makes the run state what was checked, what
+was skipped, and where the evidence is incomplete.
 
 Landing page: https://memoash.github.io/agent-workflow-pack/
 
-Free fit check: https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml
+Free audit fit check: https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml
 
 X / DM: https://x.com/ChenFN01
 
-Example fit check submission: https://github.com/MemoAsh/agent-workflow-pack/issues/1
+## What This Is
 
-Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
+This is a small service and open example repo for turning one narrow agent
+workflow into auditable repo files:
 
-Try PR review without local setup: https://memoash.github.io/agent-workflow-pack/try-pr-review.html
+- instructions the agent can reuse
+- a task procedure when one is useful
+- a receipt schema or template
+- verification notes that say what proof is required
+- explicit `pass | fail | incomplete` outcomes
 
-What to send:
+Good targets:
 
-- the prompt, SOP, or checklist you keep pasting
-- the agent/tool you use
-- what it must always do
-- what it must never touch
-- what proves the run worked
+- PR review receipts
+- MCP or tool-call audit logs
+- sensitive-file or safe-edit traces
+- release / QA checks
+- repeated agent tasks where reviewers need evidence, not confidence
 
-Small before / after:
+Bad targets:
+
+- vague "make my agent better" requests
+- full app builds
+- generic prompt packs with no verification
+- spam, platform evasion, illegal scraping, account abuse, or credential misuse
+
+## Quick Example
 
 ```text
-Before:
-Review this PR. Only report real bugs. Use file/line evidence.
-Do not comment on style. Say what tests you checked.
+Bad final answer:
+No issues found.
 
-After:
-AGENTS.md
-skills/pr-review/SKILL.md
-skills/pr-review/verification.md
-templates/review-output.md
-templates/completion-receipt.md
+Better receipt:
+subject: PR #123 checkout changes
+files_reviewed:
+  - src/payments/checkout.ts
+  - tests/checkout.test.ts
+checks_run:
+  - inspected changed behavior
+  - checked error paths
+  - checked tests touched by the diff
+not_checked:
+  - production gateway behavior
+  - browser compatibility
+verdict: incomplete
+reason: tests were inspected but not executed locally
 ```
+
+For MCP/tool-call audit logs, the same idea becomes:
+
+```text
+event: tool_call
+outcome: ok | rejected | error
+redaction_state: full | sanitized | truncated | omitted
+audit_coverage: complete | partial | unobservable
+coverage_gap: output_truncated | hook_missing | upstream_not_observed | none
+```
+
+## Examples
+
+- Audit receipt article: https://memoash.github.io/agent-workflow-pack/agent-audit-receipts.html
+- Try PR review without local setup: https://memoash.github.io/agent-workflow-pack/try-pr-review.html
+- Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
+- Completion receipts: [docs/completion-receipts.md](docs/completion-receipts.md)
+- PR review workflow: [examples/pr-review-workflow](examples/pr-review-workflow/README.md)
+- Safe edit workflow: [examples/safe-edit-workflow](examples/safe-edit-workflow/README.md)
+- Safe receipt workflow: [examples/safe-receipt-workflow](examples/safe-receipt-workflow/README.md)
+- Audit receipt JSON template: [examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json](examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json)
+
+## Service
+
+Free fit check:
+
+- send one narrow audit/workflow problem
+- I say whether a receipt would help, or whether a normal prompt/checklist is enough
+
+Paid pilot:
+
+- **$99**: one narrow audit workflow pack
+- **$299**: one audit workflow pack, setup guidance, and one revision after testing
+
+Typical deliverable:
+
+```text
+AGENTS.md or project-instruction patch
+skills/<workflow>/SKILL.md when a repeatable procedure is useful
+templates/<receipt>.md or .json
+verification.md
+README.md explaining how to run and judge the workflow
+```
+
+Start here: https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml
+
+If it is a bad fit, I will say that before you pay.
+
+## Local Install Examples
 
 Claude Code users can copy a workflow directory into `.claude/skills/`.
 Codex users can copy the same workflow into `.codex/skills/`.
 Keep repo-wide rules in `AGENTS.md`; keep repeated task procedures in `SKILL.md`.
-
-The top-level `skills/` directory is intentionally indexer-friendly for skill directories and marketplace crawlers.
-
-Quick install examples:
 
 ```bash
 # Claude Code
@@ -58,127 +124,6 @@ cp examples/pr-review-workflow/AGENTS.md ./AGENTS.md
 mkdir -p .codex/skills/pr-review
 cp -R skills/pr-review-workflow/* .codex/skills/pr-review/
 ```
-
-If you keep pasting the same long prompt into Codex, Claude Code, Copilot, Cursor, or another coding agent, that workflow probably belongs in a reusable pack:
-
-- durable repo instructions
-- task-specific skill/checklist
-- optional output templates
-- verification steps
-- a completion receipt that separates checked claims from unverified claims
-
-This turns repeated prompt knowledge into something your future self or team can run again.
-
-## The Problem
-
-AI coding agents are powerful, but repeated workflows often stay trapped in chat:
-
-- "Review this PR, but only report real risks."
-- "Fix this bug, but reproduce it first."
-- "Write release notes in our format."
-- "Never edit generated files."
-- "Run these checks before saying done."
-
-When those rules live only in a prompt, they drift. People rewrite them, agents forget them, and teams cannot audit what actually happened.
-
-## The Pack
-
-A workflow pack gives the agent a repeatable operating procedure.
-
-Typical layout:
-
-```text
-repo/
-  AGENTS.md
-  skills/
-    workflow-name/
-      SKILL.md
-      verification.md
-      templates/
-        output-template.md
-        completion-receipt.md
-```
-
-## What Goes Where
-
-| Need | Put It Here |
-|---|---|
-| Repo-wide conventions | `AGENTS.md` |
-| Task procedure | `skills/<workflow>/SKILL.md` |
-| Expected output format | `templates/` |
-| Success checks | `verification.md` |
-| Auditable completion claim | `templates/completion-receipt.md` |
-| Mechanical repeatable steps | `scripts/` when needed |
-
-## Completion Receipts
-
-The receipt is the part that keeps a workflow pack from becoming another nice prompt. It forces the agent to state:
-
-- what scope it accepted
-- which claims it checked
-- what evidence supports the result
-- which claims remain unverified
-- whether the result needs changes, human follow-up, or can proceed
-
-For PR review, this means "no blocking findings" is not enough. The agent must also say what it inspected, what it did not inspect, and what residual risk remains.
-
-See [docs/completion-receipts.md](docs/completion-receipts.md) for the minimal receipt contract.
-
-## Example
-
-See [examples/pr-review-workflow](examples/pr-review-workflow/README.md) for a small PR-review workflow pack.
-
-More examples:
-
-- [Installable PR review skill](skills/pr-review-workflow/SKILL.md)
-- [PR review workflow](examples/pr-review-workflow/README.md)
-- [Safe edit workflow](examples/safe-edit-workflow/README.md)
-- [Safe-receipt workflow (policy + audit schema)](examples/safe-receipt-workflow/README.md)
-- [Audit receipt JSON template](examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json)
-
-## Service
-
-I offer a small paid pilot:
-
-- **$99**: one narrow workflow pack
-- **$299**: one workflow pack, setup guidance, and one revision after testing
-
-Good pilot workflows:
-
-- PR review
-- bug reproduction and fix
-- release notes
-- safe edit / restricted path checks
-- QA verification
-- customer issue triage
-- internal handoff for weaker AI models
-
-Not a good fit:
-
-- spam, account abuse, platform evasion, or illegal scraping
-- vague "make my agent better" requests
-- full app builds disguised as one workflow
-- generic prompt packs with no verification
-
-## How A Pilot Works
-
-1. You send one repeated prompt, SOP, checklist, or example output.
-2. I separate repo rules, task steps, templates, and verification.
-3. I deliver a small workflow pack.
-4. You test it once.
-5. I make one revision based on what failed.
-
-## Contact
-
-Send one repeated AI-agent workflow you are tired of rewriting.
-
-If it is a bad fit, I will say that before you pay.
-
-Open a [free fit check / pilot issue](https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml) with your repeated workflow.
-
-Or send the same prompt to [@ChenFN01 on X](https://x.com/ChenFN01).
-
-See [service/offer.md](service/offer.md) for scope and pricing.
 
 ## License
 
