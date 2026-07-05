@@ -1,0 +1,51 @@
+{
+  "receipt_version": "0.1",
+  "subject": {
+    "name": "",
+    "repo_ref": "",
+    "audit_type": "rest-api|security|pr-review|mcp|other"
+  },
+  "run_shape": {
+    "orchestrator": "",
+    "workflow_legs": 0,
+    "subagents_used": 0,
+    "estimated_tokens": 0,
+    "started_at": "",
+    "completed_at": ""
+  },
+  "coverage": {
+    "files_expected": 0,
+    "files_seen": 0,
+    "coverage_method": "grep|manifest|diff|manual|mixed",
+    "set_equal": false,
+    "surface_estimate": "",
+    "missed_items": []
+  },
+  "verification": {
+    "primary_findings": 0,
+    "verifier_verdicts": 0,
+    "confirmed": 0,
+    "adjusted": 0,
+    "refuted": 0,
+    "verification_method": ""
+  },
+  "evidence": {
+    "appendix_path": "",
+    "appendix_published": false,
+    "caller_search_scopes": [],
+    "commands_or_queries": [],
+    "artifact_hashes": []
+  },
+  "follow_up_risk": {
+    "drift_after_repo_changes": "low|medium|high|unknown",
+    "requires_rerun_after_prs": true,
+    "known_limitations": []
+  },
+  "coverage_gaps": [
+    {
+      "gap": "estimated_surface|local_only_appendix|inherited_behavior|caller_search_scope|other",
+      "reason": ""
+    }
+  ],
+  "verdict": "pass|fail|incomplete"
+}
