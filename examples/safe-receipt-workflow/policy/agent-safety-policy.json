@@ -1,0 +1,41 @@
+{
+  "policy_version": "1.0",
+  "workflow": "safe-receipt",
+  "risk_scope": {
+    "allowed_tools": ["rg", "git", "cat", "sed", "python", "pytest", "npm", "node", "npx", "npm run"],
+    "blocked_tools": ["curl", "wget", "ssh", "nc", "powershell", "python -c", "rm -rf", "sudo", "chmod", "chown"],
+    "allowed_commands_hint": [
+      "inspect files",
+      "run project tests",
+      "read logs",
+      "format output",
+      "generate report"
+    ],
+    "blocked_outbound_domains": [
+      "pastebin.com",
+      "0x0.st",
+      "file.io"
+    ],
+    "restricted_paths": [
+      ".env",
+      "**/*.pem",
+      "**/*.key",
+      "secrets/**",
+      "keys/**",
+      "dist/**",
+      "build/**"
+    ],
+    "secret_patterns": [
+      "AKIA[0-9A-Z]{16}",
+      "ghp_[A-Za-z0-9]{36}",
+      "sk_live_[A-Za-z0-9]{24,}"
+    ],
+    "max_file_reads": 200,
+    "required_receipt_fields": [
+      "checks_run",
+      "checks_blocked",
+      "unverified",
+      "residual_risk"
+    ]
+  }
+}

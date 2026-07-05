@@ -14,9 +14,11 @@ Price:
 - `README.md`
 - `AGENTS.md` or a project-instruction patch
 - `skills/<workflow>/SKILL.md`
+- `policy/<workflow>.json` or `policy/agent-safety-policy.json` (safety pilots)
 - optional templates
 - optional scripts
 - `verification.md`
+- optional receipt schema block (`checks_run`, `checks_blocked`, `unverified`, `residual_risk`)
 
 ## What Counts As Success
 
@@ -39,6 +41,10 @@ Bad fit:
 - full app build
 - spam, evasion, illegal scraping, account farming, or credential misuse
 
+I do not provide SOC2/ISO/no-risk guarantees and do not claim security
+certification. The first pilot is intentionally scoped to verifiable, narrow,
+repeatable workflow behavior.
+
 ## Payment Timing
 
 For first pilots:
@@ -46,4 +52,3 @@ For first pilots:
 1. Do a free fit check from the issue form.
 2. If it fits, confirm the exact scope.
 3. Collect payment before delivery, or do one discounted first case study if the buyer agrees the anonymized before/after can be public.
-

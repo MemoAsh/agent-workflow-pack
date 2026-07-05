@@ -106,6 +106,7 @@ More examples:
 - [Installable PR review skill](skills/pr-review-workflow/SKILL.md)
 - [PR review workflow](examples/pr-review-workflow/README.md)
 - [Safe edit workflow](examples/safe-edit-workflow/README.md)
+- [Safe-receipt workflow (policy + audit schema)](examples/safe-receipt-workflow/README.md)
 
 ## Service
 

@@ -47,9 +47,79 @@ Unverified claims:
 
 Verdict:
 - Verdict: changes requested / no blocking findings / needs human follow-up
-- Residual risk:
+- Residual risk: low / medium / high
 - Confidence: high / medium / low
 ```
+
+## Machine-Readable Receipt Pattern (v1)
+
+For clients that want automation, keep one structured block in the run notes:
+
+```text
+{
+  "run_id": "run_2026-07-05_001",
+  "workflow": "pr-review",
+  "agent": "claude-code | codex | other",
+  "scope": {
+    "in_scope_paths": ["src/", "package.json"],
+    "out_of_scope_paths": [".env", "models/"]
+  },
+  "checks_run": [
+    "file_diff_reviewed",
+    "restricted_paths_blocked",
+    "suspicious_commands_checked"
+  ],
+  "checks_blocked": [],
+  "unverified": [
+    "security_threat_model_not_confirmed",
+    "runtime_sandbox_not_tested"
+  ],
+  "evidence": [
+    { "type": "file", "path": "src/main.js", "status": "inspected" },
+    { "type": "command", "name": "git diff", "status": "executed" }
+  ],
+  "verdict": "needs_followup | no_blocking_findings | changes_requested",
+  "residual_risk": "low | medium | high",
+  "next_steps": ["rerun_after_fix", "manual_review_required"]
+}
+```
+
+This pattern is optional but it makes follow-up easy for teams and auditors.
+
+## Policy-Controlled Receipt (v2)
+
+For narrow safety pilots, include policy controls and the resulting blockers.
+
+```text
+{
+  "run_id": "run_2026-07-05_002",
+  "workflow": "safe-receipt",
+  "policy_file": "policy/agent-safety-policy.json",
+  "policy_version": "1.0",
+  "checks_run": [
+    "policy_loaded",
+    "restricted_path_check",
+    "blocked_action_scan",
+    "secret_pattern_scan"
+  ],
+  "checks_blocked": [
+    {
+      "rule": "restricted_path",
+      "target": "secrets/.env",
+      "status": "blocked_by_policy"
+    }
+  ],
+  "unverified": ["runtime_sandbox", "third_party_scan"],
+  "evidence": [
+    { "type": "file", "path": "src/payments/checkout.js", "status": "inspected" },
+    { "type": "command", "name": "npx eslint", "status": "executed" }
+  ],
+  "verdict": "needs_human_follow_up",
+  "residual_risk": "medium"
+}
+```
+
+Use this in addition to the human-readable section when a buyer asks for audit-ready output.
 
 ## Why It Belongs In A Workflow Pack
 
@@ -60,4 +130,3 @@ Verdict:
 `verification.md` tells the agent what must be checked before finishing.
 
 `completion-receipt.md` makes the final claim reviewable.
-
