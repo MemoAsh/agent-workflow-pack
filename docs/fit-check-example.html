@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Audit fit check example</title>
+    <meta
+      name="description"
+      content="Example response for a free Agent Workflow Pack audit fit check."
+    />
+    <meta property="og:title" content="Audit fit check example" />
+    <meta
+      property="og:description"
+      content="See the exact kind of fit / not-fit response you get before paying for an audit workflow pack."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://memoash.github.io/agent-workflow-pack/fit-check-example.html" />
+    <meta property="og:image" content="https://memoash.github.io/agent-workflow-pack/social-card.png" />
+    <style>
+      :root {
+        --bg: #f7f7f4;
+        --text: #181a1f;
+        --muted: #5c6370;
+        --line: #d9d9d2;
+        --accent: #0f766e;
+        --panel: #ffffff;
+        --code: #101418;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: #115e59;
+      }
+
+      .wrap {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.94);
+        position: sticky;
+        top: 0;
+      }
+
+      nav {
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+
+      article {
+        padding: 56px 0;
+      }
+
+      .eyebrow {
+        color: #115e59;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 7vw, 64px);
+        line-height: 1;
+        letter-spacing: 0;
+        margin: 0 0 18px;
+      }
+
+      .lead {
+        font-size: 20px;
+        color: #2f343b;
+        max-width: 760px;
+      }
+
+      h2 {
+        font-size: 26px;
+        margin: 40px 0 12px;
+        letter-spacing: 0;
+      }
+
+      p,
+      li {
+        font-size: 17px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 18px;
+      }
+
+      pre {
+        margin: 16px 0 0;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--code);
+        color: #edf2f7;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 1px solid var(--text);
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 32px 0 48px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 760px) {
+        nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <div class="brand">Agent Workflow Pack</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="agent-audit-receipts.html">Audit receipts</a>
+          <a href="mcp-team-audit-receipt.html">MCP teams</a>
+          <a href="https://github.com/MemoAsh/agent-workflow-pack">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <article class="wrap">
+      <div class="eyebrow">Free Fit Check Example</div>
+      <h1>What you get before paying.</h1>
+      <p class="lead">
+        The free fit check is not a sales call. It is a short technical response
+        that says whether your workflow needs an audit receipt, what the receipt
+        should capture, and whether paid work is worth doing.
+      </p>
+
+      <h2>Example submission</h2>
+      <div class="card">
+        <p><strong>Workflow:</strong> A Claude Code / Codex subagent reviews pull requests before commit.</p>
+        <p><strong>Current problem:</strong> The review often says "looks good" without proving which risky files, tests, or runtime assumptions were checked.</p>
+        <p><strong>Evidence wanted:</strong> files reviewed, tests run or skipped, risky paths checked, and any unverified claims.</p>
+      </div>
+
+      <h2>Example fit-check response</h2>
+      <pre>Fit: yes
+
+Why:
+This is a good audit-receipt target because the workflow already has a repeated
+decision point: "is this PR safe enough to commit?" The weak point is not the
+review prose. The weak point is missing evidence quality.
+
+Receipt fields I would use:
+- subject: PR number / branch / commit range
+- files_reviewed
+- risky_files_not_reviewed
+- tests_run
+- tests_skipped
+- claims_unverified
+- reviewer_verdict: pass | fail | incomplete
+
+Evidence gaps that should remain incomplete:
+- tests were inspected but not executed
+- runtime behavior depends on an external service
+- generated code was reviewed but not manually run
+- subagent report was summarized without raw findings attached
+
+Paid pilot judgment:
+Worth a $99 workflow pack if this review is run repeatedly on real PRs.
+Not worth a paid pilot if this is a one-off prompt or if the team never reviews
+the receipt after the agent produces it.</pre>
+
+      <h2>What the paid version would add</h2>
+      <ul>
+        <li>a repo-specific `AGENTS.md` or instruction patch</li>
+        <li>a narrow `SKILL.md` for the repeated review workflow</li>
+        <li>a receipt template in Markdown or JSON</li>
+        <li>a short verification file that says how to judge the receipt</li>
+      </ul>
+
+      <div class="actions">
+        <a class="button primary" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
+          Send your fit check
+        </a>
+        <a class="button" href="try-pr-review.html">Try a receipt prompt</a>
+      </div>
+    </article>
+
+    <footer>
+      <div class="wrap">
+        Built as a service-first validation project. No spam, evasion, illegal scraping, account abuse, or guaranteed-agent-behavior claims.
+      </div>
+    </footer>
+  </body>
+</html>
