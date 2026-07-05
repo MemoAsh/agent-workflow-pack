@@ -1,17 +1,17 @@
-name: Pilot workflow pack
-description: Submit one repeated AI-agent workflow for a free fit check before any paid pilot.
-title: "[Pilot] "
+name: Audit fit check
+description: Submit one AI-agent audit workflow for a free fit check before any paid pilot.
+title: "[Audit fit check] "
 labels:
   - pilot
 body:
   - type: markdown
     attributes:
       value: |
-        Submit one repeated AI-agent workflow. Keep it narrow.
+        Submit one narrow AI-agent workflow where pass/fail is not enough because the evidence may be incomplete.
 
-        Good examples: PR review, bug reproduction, safe edit rules, release notes, QA checks, customer issue triage.
+        Good examples: PR review receipts, MCP/tool-call audit logs, safe edit checks, sensitive-file traces, release checks, customer issue triage.
 
-        The fit check is free. If the workflow is a fit, the paid pilot options are $99 for one narrow workflow pack or $299 with setup guidance and one revision.
+        The fit check is free. If the workflow is a fit, the paid pilot options are $99 for one narrow audit workflow pack or $299 with setup guidance and one revision.
 
         Do not submit requests involving spam, account abuse, illegal scraping, credential misuse, or platform evasion.
   - type: dropdown
@@ -27,23 +27,36 @@ body:
     validations:
       required: true
   - type: dropdown
+    id: audit_surface
+    attributes:
+      label: Audit surface
+      description: What kind of evidence should the agent or tool produce?
+      options:
+        - PR review / code review receipt
+        - MCP or tool-call audit log
+        - Sensitive-file or safe-edit trace
+        - Release / QA / deployment check
+        - Other repeated agent workflow
+    validations:
+      required: true
+  - type: dropdown
     id: pilot_interest
     attributes:
       label: Pilot interest
       description: This does not commit you to paying; it helps scope the response.
       options:
         - Free fit check only
-        - Interested in the $99 narrow workflow pack if this is a fit
-        - Interested in the $299 guided workflow pack if this is a fit
+        - Interested in the $99 narrow audit workflow pack if this is a fit
+        - Interested in the $299 guided audit workflow pack if this is a fit
         - Not sure yet
     validations:
       required: true
   - type: textarea
     id: workflow
     attributes:
-      label: Repeated workflow
-      description: What do you keep asking the agent to do?
-      placeholder: "Example: Review PRs and report only behavior risks with file/line evidence."
+      label: Workflow to audit
+      description: What do you keep asking the agent or tool to do?
+      placeholder: "Example: Review PRs and report only behavior risks with file/line evidence, plus what was not checked."
     validations:
       required: true
   - type: textarea
@@ -70,17 +83,25 @@ body:
   - type: textarea
     id: verify
     attributes:
-      label: Verification
-      description: What proves the workflow succeeded?
-      placeholder: "Example: Findings include file/line evidence, tests are listed, and restricted files were not edited."
+      label: Evidence and gaps
+      description: What evidence should the receipt include, and what gaps should be allowed to show as incomplete?
+      placeholder: "Example: Findings include file/line evidence, tests are listed, truncated output is marked, and restricted files are reported as checked or unobservable."
     validations:
       required: true
+  - type: textarea
+    id: receipt_shape
+    attributes:
+      label: Desired receipt shape
+      description: Optional. Paste any fields you already know you want in the final receipt.
+      placeholder: "Example: files_reviewed, checks_run, not_checked, redaction_state, audit_coverage, verdict."
+    validations:
+      required: false
   - type: checkboxes
     id: scope
     attributes:
       label: Scope confirmation
       options:
-        - label: This is one narrow repeated workflow, not a full app build.
+        - label: This is one narrow audit/workflow problem, not a full app build.
           required: true
         - label: This request does not involve spam, evasion, illegal scraping, or credential misuse.
           required: true
