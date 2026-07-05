@@ -242,6 +242,24 @@ audit_coverage: complete | partial | unobservable</pre>
         or a subagent path never emitted events.
       </p>
 
+      <h2>Example: passive sensitive-file traces</h2>
+      <p>
+        Passive audit tools need the same honesty. Seeing <code>cat .env</code> in
+        command text is a useful risk signal, but it is not the same as proving a
+        file was opened and fully captured.
+      </p>
+      <pre>sensitive_path_match: true | false
+sensitivity_class: dotenv | ssh_key | cloud_creds | browser_profile | custom
+access_operation: read | write | stat | list | unknown
+redaction_state: applied | not_needed | not_available | failed
+audit_coverage: complete | partial | unobservable
+coverage_gap: command_text_only | stdout_truncated | path_unresolved | hook_missing_file_event</pre>
+
+      <p>
+        The receipt should be allowed to say "sensitive intent observed, file
+        access not proven." That is more useful than a confident green check.
+      </p>
+
       <h2>Example: hash-chained logs</h2>
       <p>Hash chains are useful. They help prove order and tamper evidence.</p>
       <p>They do not prove that the log row contains enough evidence.</p>
