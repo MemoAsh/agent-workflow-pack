@@ -38,18 +38,6 @@ body:
         - Not sure yet
     validations:
       required: true
-  - type: dropdown
-    id: pilot_interest
-    attributes:
-      label: Pilot interest
-      description: This does not commit you to paying; it helps scope the response.
-      options:
-        - Free fit check only
-        - Interested in the $99 narrow workflow pack if this is a fit
-        - Interested in the $299 guided workflow pack if this is a fit
-        - Not sure yet
-    validations:
-      required: true
   - type: textarea
     id: workflow
     attributes:

@@ -1,6 +1,8 @@
 # Agent Workflow Pack
 
-Reusable workflow packs for AI coding agents.
+Send one repeated Codex, Claude Code, Cursor, Copilot, or other AI coding-agent
+prompt. Get back a small set of repo files your agent can reuse: rules, task
+steps, output templates, and a receipt of what was actually checked.
 
 Landing page: https://memoash.github.io/agent-workflow-pack/
 
@@ -11,6 +13,14 @@ Example fit check submission: https://github.com/MemoAsh/agent-workflow-pack/iss
 Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
 
 Try PR review without local setup: https://memoash.github.io/agent-workflow-pack/try-pr-review.html
+
+What to send:
+
+- the prompt, SOP, or checklist you keep pasting
+- the agent/tool you use
+- what it must always do
+- what it must never touch
+- what proves the run worked
 
 Claude Code users can copy a workflow directory into `.claude/skills/`.
 Codex users can copy the same workflow into `.codex/skills/`.
