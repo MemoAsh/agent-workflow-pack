@@ -22,6 +22,21 @@ What to send:
 - what it must never touch
 - what proves the run worked
 
+Small before / after:
+
+```text
+Before:
+Review this PR. Only report real bugs. Use file/line evidence.
+Do not comment on style. Say what tests you checked.
+
+After:
+AGENTS.md
+skills/pr-review/SKILL.md
+skills/pr-review/verification.md
+templates/review-output.md
+templates/completion-receipt.md
+```
+
 Claude Code users can copy a workflow directory into `.claude/skills/`.
 Codex users can copy the same workflow into `.codex/skills/`.
 Keep repo-wide rules in `AGENTS.md`; keep repeated task procedures in `SKILL.md`.
