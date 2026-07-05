@@ -1,5 +1,5 @@
 name: Pilot workflow pack
-description: Submit one repeated AI-agent workflow for a paid or pre-paid fit check.
+description: Submit one repeated AI-agent workflow for a free fit check before any paid pilot.
 title: "[Pilot] "
 labels:
   - pilot
@@ -10,6 +10,8 @@ body:
         Submit one repeated AI-agent workflow. Keep it narrow.
 
         Good examples: PR review, bug reproduction, safe edit rules, release notes, QA checks, customer issue triage.
+
+        The fit check is free. If the workflow is a fit, the paid pilot options are $99 for one narrow workflow pack or $299 with setup guidance and one revision.
 
         Do not submit requests involving spam, account abuse, illegal scraping, credential misuse, or platform evasion.
   - type: dropdown
@@ -22,6 +24,18 @@ body:
         - Copilot
         - Cursor
         - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: pilot_interest
+    attributes:
+      label: Pilot interest
+      description: This does not commit you to paying; it helps scope the response.
+      options:
+        - Free fit check only
+        - Interested in the $99 narrow workflow pack if this is a fit
+        - Interested in the $299 guided workflow pack if this is a fit
+        - Not sure yet
     validations:
       required: true
   - type: textarea
