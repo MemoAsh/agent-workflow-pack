@@ -16,6 +16,7 @@ The workflow is split into reusable files:
 AGENTS.md
 skills/pr-review/SKILL.md
 skills/pr-review/templates/review-output.md
+skills/pr-review/templates/completion-receipt.md
 skills/pr-review/verification.md
 ```
 
@@ -24,6 +25,7 @@ skills/pr-review/verification.md
 - `AGENTS.md` stores durable review standards.
 - `SKILL.md` defines the review procedure.
 - `templates/review-output.md` fixes the output shape.
+- `templates/completion-receipt.md` separates checked claims from unverified claims.
 - `verification.md` makes quality auditable.
 
 The next prompt can be shorter:
@@ -37,5 +39,6 @@ This directory includes the sample files:
 - [AGENTS.md](AGENTS.md)
 - [skills/pr-review/SKILL.md](skills/pr-review/SKILL.md)
 - [skills/pr-review/templates/review-output.md](skills/pr-review/templates/review-output.md)
+- [skills/pr-review/templates/completion-receipt.md](skills/pr-review/templates/completion-receipt.md)
 - [skills/pr-review/verification.md](skills/pr-review/verification.md)
 

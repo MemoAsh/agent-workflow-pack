@@ -8,4 +8,7 @@ A valid review:
 - States when no issues were found.
 - States whether tests were run.
 - Does not suggest unrelated rewrites.
+- Ends with a completion receipt.
+- Separates checked claims from unverified claims.
+- Names files or areas that were not inspected.
 

@@ -28,6 +28,8 @@ Find the highest-impact issues in the change. The output is for an engineer deci
 
 Use `templates/review-output.md`.
 
+End with `templates/completion-receipt.md`. The receipt must separate checked claims from unverified claims.
+
 ## Verification
 
 Before finishing, apply `verification.md`.

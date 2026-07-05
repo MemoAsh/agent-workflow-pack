@@ -38,6 +38,7 @@ If you keep pasting the same long prompt into Codex, Claude Code, Copilot, Curso
 - task-specific skill/checklist
 - optional output templates
 - verification steps
+- a completion receipt that separates checked claims from unverified claims
 
 This turns repeated prompt knowledge into something your future self or team can run again.
 
@@ -68,6 +69,7 @@ repo/
       verification.md
       templates/
         output-template.md
+        completion-receipt.md
 ```
 
 ## What Goes Where
@@ -78,7 +80,22 @@ repo/
 | Task procedure | `skills/<workflow>/SKILL.md` |
 | Expected output format | `templates/` |
 | Success checks | `verification.md` |
+| Auditable completion claim | `templates/completion-receipt.md` |
 | Mechanical repeatable steps | `scripts/` when needed |
+
+## Completion Receipts
+
+The receipt is the part that keeps a workflow pack from becoming another nice prompt. It forces the agent to state:
+
+- what scope it accepted
+- which claims it checked
+- what evidence supports the result
+- which claims remain unverified
+- whether the result needs changes, human follow-up, or can proceed
+
+For PR review, this means "no blocking findings" is not enough. The agent must also say what it inspected, what it did not inspect, and what residual risk remains.
+
+See [docs/completion-receipts.md](docs/completion-receipts.md) for the minimal receipt contract.
 
 ## Example
 
