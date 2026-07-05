@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Try PR Review Workflow</title>
+    <title>Try an Audit Receipt</title>
     <meta
       name="description"
-      content="Copy a no-install PR review workflow prompt for Claude Code, Codex, Cursor, Copilot, or another coding agent."
+      content="Copy a no-install audit receipt prompt for Claude Code, Codex, Cursor, Copilot, or another coding agent."
     />
     <style>
       :root {
@@ -139,90 +139,76 @@
     </header>
 
     <main class="wrap">
-      <h1>Try the PR review workflow.</h1>
+      <h1>Try an audit receipt.</h1>
       <p class="lead">
-        Copy this prompt into Claude Code, Codex, Cursor, Copilot, or another coding agent with a branch,
-        diff, or pull request. It simulates the reusable workflow before local setup.
+        Copy this prompt into Claude Code, Codex, Cursor, Copilot, or another coding agent after a branch,
+        diff, MCP change, or tool-call workflow. It tests whether the run can produce evidence, coverage,
+        gaps, and an honest incomplete verdict before local setup.
       </p>
 
       <div class="panel">
         <div class="actions">
-          <button class="primary" type="button" onclick="copyPrompt()">Copy prompt</button>
+          <button class="primary" type="button" onclick="copyPrompt()">Copy audit prompt</button>
           <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/tree/main/examples/pr-review-workflow">
             View source files
           </a>
         </div>
         <p class="muted" id="status">No local install required. For repeat use, install the skill from the repo.</p>
-        <textarea id="prompt" spellcheck="false">Use this PR review workflow on the current branch, diff, or pull request.
+        <textarea id="prompt" spellcheck="false">Create an audit receipt for the current agent run, PR review, MCP change, or tool-call workflow.
 
 Goal:
-Find the highest-impact issues in the change. The output is for an engineer deciding whether the PR can merge.
+Make the result falsifiable. Separate the outcome from the evidence quality so a human can see what was checked, skipped, unobservable, or incomplete.
 
 Process:
-1. Read the diff and the surrounding code needed to understand behavior.
-2. Identify changed contracts, data flow, error handling, user-visible behavior, and tests.
-3. List findings first, ordered by severity.
-4. Keep summaries brief.
-
-Finding rules:
-- A finding must describe a concrete risk.
-- A finding must include file and line evidence.
-- Do not include speculative issues without stating the assumption.
-- Do not include style-only comments.
-- If there are no issues, say that clearly and mention residual test risk.
+1. Identify the exact workflow or run being audited.
+2. List the claims the run made, such as reviewed files, tools called, policies enforced, tests run, redactions applied, or approvals checked.
+3. For each claim, record the concrete evidence source.
+4. Mark missing, weak, or unobservable evidence as incomplete instead of silently trusting it.
+5. End with a verdict that distinguishes outcome from audit coverage.
 
 Output format:
 
-## Findings
-
-- [P1/P2/P3] Title
-  File: `path/to/file.ext:line`
-  Issue: What can break and why.
-  Fix direction: The smallest change that addresses it.
-
-## Open Questions
-
-- Question or assumption, if any.
-
-## Verification
-
-- Commands run:
-- Commands not run:
-- Remaining risk:
-
-## Completion Receipt
+## Audit Receipt
 
 Scope:
-- Source reviewed:
-- Accepted scope:
+- Workflow audited:
+- Run or change inspected:
+- In scope:
 - Out of scope:
 
 Claims checked:
-- Changed behavior/contracts inspected:
-- Risk areas inspected:
-- Tests considered:
-- Negative constraints checked:
+- Outcome claimed:
+- Files, tools, or events claimed:
+- Policy, approval, or redaction claims:
+- Tests or checks claimed:
 
 Evidence:
-- Findings with file/line citations:
-- Commands run:
-- Commands not run:
-- Files or areas not inspected:
+- Direct evidence found:
+- Indirect evidence found:
+- Evidence not found:
+- Files, logs, events, or commands inspected:
 
-Unverified claims:
+Coverage:
+- audit_coverage: complete / partial / not_enough_evidence
+- unobservable areas:
+- skipped areas:
+- redaction_state: not_applicable / applied / claimed_but_unverified
+
+Incomplete Claims:
 - Claim:
   Reason it is unverified:
   Follow-up needed:
 
 Verdict:
-- Verdict: changes requested / no blocking findings / needs human follow-up
+- outcome: passed / failed / no_blocking_findings / needs_human_review
+- evidence_verdict: sufficient / incomplete / insufficient
 - Residual risk:
 - Confidence: high / medium / low
 
-Start by telling me what diff or PR you inspected. If no diff is available, ask me for one.</textarea>
+Start by naming the workflow or run you inspected. If no evidence is available, ask me for the diff, log, PR, transcript, or tool-call trace.</textarea>
         <div class="actions">
           <a class="button" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
-            Submit your workflow for a free fit check
+            Submit your workflow for a free audit fit check
           </a>
         </div>
       </div>
@@ -235,10 +221,10 @@ Start by telling me what diff or PR you inspected. If no diff is available, ask 
         prompt.select();
         try {
           await navigator.clipboard.writeText(prompt.value);
-          status.textContent = "Copied. Paste it into your coding agent with a branch, diff, or PR.";
+          status.textContent = "Copied. Paste it into your coding agent with a run, branch, diff, PR, or tool-call trace.";
         } catch {
           document.execCommand("copy");
-          status.textContent = "Copied. Paste it into your coding agent with a branch, diff, or PR.";
+          status.textContent = "Copied. Paste it into your coding agent with a run, branch, diff, PR, or tool-call trace.";
         }
       }
     </script>
