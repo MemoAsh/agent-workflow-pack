@@ -1,0 +1,32 @@
+{
+  "receipt_version": "0.1",
+  "subject": {
+    "name": "",
+    "version_or_hash": "",
+    "type": "repo|mcp-server|agent-workflow|other"
+  },
+  "input_coverage": {
+    "mode": "manual|log|synthetic|mixed",
+    "sessions": 0,
+    "tool_calls_observed": 0,
+    "tasks_attempted": []
+  },
+  "checks": {
+    "enabled": [],
+    "skipped": [
+      {
+        "check": "",
+        "reason": ""
+      }
+    ]
+  },
+  "findings_summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "telemetry_gaps": [],
+  "verdict": "pass|fail|incomplete",
+  "generated_at": ""
+}

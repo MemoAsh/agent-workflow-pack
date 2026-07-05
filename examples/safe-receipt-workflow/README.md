@@ -16,6 +16,7 @@ The workflow pack forces explicit safety boundaries and a machine-readable compl
 - `skills/safe-receipt/SKILL.md` defines the safety workflow
 - `policy/agent-safety-policy.json` stores one-file policy inputs
 - `skills/safe-receipt/templates/completion-receipt.md` captures what changed, what was checked, and what remains unverified
+- `skills/safe-receipt/templates/audit-receipt.json` gives CI and audit tools a small machine-readable receipt shape
 - `skills/safe-receipt/verification.md` defines mandatory run-end checks
 
 ## Files
@@ -25,6 +26,7 @@ The workflow pack forces explicit safety boundaries and a machine-readable compl
 - [skills/safe-receipt/SKILL.md](skills/safe-receipt/SKILL.md)
 - [skills/safe-receipt/verification.md](skills/safe-receipt/verification.md)
 - [skills/safe-receipt/templates/completion-receipt.md](skills/safe-receipt/templates/completion-receipt.md)
+- [skills/safe-receipt/templates/audit-receipt.json](skills/safe-receipt/templates/audit-receipt.json)
 
 ## Pilot Scope (Recommended)
 

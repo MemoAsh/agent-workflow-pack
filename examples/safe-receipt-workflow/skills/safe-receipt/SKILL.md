@@ -28,6 +28,7 @@ audit trail of what was allowed, blocked, and unverified.
 5. Run project checks relevant to the request.
 6. Validate no secret patterns or restricted paths were touched without permission.
 7. Emit `templates/completion-receipt.md` with claims and evidence.
+8. If the workflow needs CI, audit, or MCP-style downstream processing, also fill `templates/audit-receipt.json`.
 
 ## Stop Conditions
 
@@ -37,7 +38,7 @@ audit trail of what was allowed, blocked, and unverified.
 
 ## Output
 
-Use `templates/completion-receipt.md` at end.
+Use `templates/completion-receipt.md` at end. Add `templates/audit-receipt.json` when a machine-readable receipt is useful.
 
 ## Verification
 

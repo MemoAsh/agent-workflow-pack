@@ -121,6 +121,49 @@ For narrow safety pilots, include policy controls and the resulting blockers.
 
 Use this in addition to the human-readable section when a buyer asks for audit-ready output.
 
+## Audit Receipt Template
+
+For MCP servers, CI checks, or log-driven audits, keep a tiny JSON artifact that
+can be consumed without parsing prose:
+
+```json
+{
+  "receipt_version": "0.1",
+  "subject": {
+    "name": "",
+    "version_or_hash": "",
+    "type": "repo|mcp-server|agent-workflow|other"
+  },
+  "input_coverage": {
+    "mode": "manual|log|synthetic|mixed",
+    "sessions": 0,
+    "tool_calls_observed": 0,
+    "tasks_attempted": []
+  },
+  "checks": {
+    "enabled": [],
+    "skipped": [
+      {
+        "check": "",
+        "reason": ""
+      }
+    ]
+  },
+  "findings_summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "telemetry_gaps": [],
+  "verdict": "pass|fail|incomplete",
+  "generated_at": ""
+}
+```
+
+The important verdict is `incomplete`. It prevents a run with too little
+evidence from looking like a clean pass.
+
 ## Why It Belongs In A Workflow Pack
 
 `AGENTS.md` tells the agent the stable repo rules.
