@@ -282,21 +282,21 @@
           <h2>What to send</h2>
           <div class="grid">
             <div class="card">
-              <h3>The prompt</h3>
-              <p class="muted">Paste the messy prompt, checklist, or SOP you already use. It does not need to be clean.</p>
+              <h3>The audit surface</h3>
+              <p class="muted">Name the run, tool call, PR review, or safety check where evidence can be incomplete.</p>
             </div>
             <div class="card">
-              <h3>The rules</h3>
-              <p class="muted">List what the agent must always do and what it must never touch.</p>
+              <h3>The evidence</h3>
+              <p class="muted">List what the agent should prove: files reviewed, tool calls observed, redaction state, or checks run.</p>
             </div>
             <div class="card">
-              <h3>The proof</h3>
-              <p class="muted">Say what would convince you the run worked: tests, file evidence, review format, or a human check.</p>
+              <h3>The gaps</h3>
+              <p class="muted">Say what should be allowed to show as partial, unobservable, skipped, or incomplete.</p>
             </div>
           </div>
           <div class="actions">
             <a class="button primary" href="https://github.com/MemoAsh/agent-workflow-pack/issues/new?template=pilot.yml">
-              Send a prompt for fit check
+              Send an audit fit check
             </a>
             <a class="button" href="https://x.com/ChenFN01">
               Or DM @ChenFN01
@@ -311,25 +311,25 @@
           <div class="grid">
             <div class="card">
               <h3>Before</h3>
-              <p class="muted">A prompt that gets pasted into chat every week.</p>
-              <pre>Review this PR.
-Only report real bugs.
-Use file/line evidence.
-Do not comment on style.
-Say what tests you checked.</pre>
+              <p class="muted">A confident answer with thin evidence.</p>
+              <pre>No issues found.
+Audit log exists.
+Sensitive values are redacted.
+Ready to ship.</pre>
             </div>
             <div class="card">
               <h3>After</h3>
-              <p class="muted">A small repo folder the agent can reuse.</p>
-              <pre>AGENTS.md
-skills/pr-review/SKILL.md
-skills/pr-review/verification.md
-templates/review-output.md
-templates/completion-receipt.md</pre>
+              <p class="muted">A receipt that separates outcome from evidence quality.</p>
+              <pre>outcome: no_blocking_findings
+files_reviewed: 2
+tests_run: none
+redaction_state: applied
+audit_coverage: partial
+verdict: incomplete</pre>
             </div>
             <div class="card">
               <h3>Result</h3>
-              <p class="muted">The agent gets the same rules next time, and the final answer says what was checked, skipped, and left for a human.</p>
+              <p class="muted">A reviewer can see what was checked, what was missing, and whether the gap matters.</p>
               <a href="try-pr-review.html">Try the PR review prompt</a>
             </div>
           </div>
