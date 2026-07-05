@@ -73,7 +73,7 @@ coverage_gap: output_truncated | hook_missing | upstream_not_observed | none
 ## Examples
 
 - Audit receipt article: https://memoash.github.io/agent-workflow-pack/agent-audit-receipts.html
-- Try PR review without local setup: https://memoash.github.io/agent-workflow-pack/try-pr-review.html
+- Try an audit receipt without local setup: https://memoash.github.io/agent-workflow-pack/try-pr-review.html
 - Free SKILL.md checker: https://memoash.github.io/agent-workflow-pack/skill-checker.html
 - Completion receipts: [docs/completion-receipts.md](docs/completion-receipts.md)
 - PR review workflow: [examples/pr-review-workflow](examples/pr-review-workflow/README.md)
