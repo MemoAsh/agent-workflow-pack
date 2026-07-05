@@ -81,6 +81,14 @@ coverage_gap: output_truncated | hook_missing | upstream_not_observed | none
 - Safe receipt workflow: [examples/safe-receipt-workflow](examples/safe-receipt-workflow/README.md)
 - Audit receipt JSON template: [examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json](examples/safe-receipt-workflow/skills/safe-receipt/templates/audit-receipt.json)
 
+## Public Signals So Far
+
+These are technical validation threads, not customer logos:
+
+- ReviewMyMCP maintainer asked to iterate on a machine-readable MCP audit receipt shape: https://github.com/rogue-socket/reviewmymcp/issues/1#issuecomment-4885283874
+- Traceary adopted the split between sensitive-path match, access operation, redaction state, and coverage gaps: https://github.com/duck8823/traceary/issues/1257#issuecomment-4886498153
+- Forge discussion helped sharpen run-level PR contract report fields: https://github.com/Joncallim/Forge/issues/141#issuecomment-4885081208
+
 ## Service
 
 Free fit check:
