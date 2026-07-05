@@ -1,0 +1,84 @@
+name: Paid audit workflow pilot
+description: Request a scoped $99 or $299 audit workflow pack.
+title: "[Paid pilot] "
+labels:
+  - pilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when you already know you want a scoped paid pilot.
+
+        Paid pilot options:
+
+        - $99: one narrow audit workflow pack
+        - $299: one audit workflow pack, setup guidance, and one revision after testing
+
+        I will still reject bad-fit requests before taking payment.
+
+        Good fit: PR/code review receipts, MCP/tool-call audit logs, safe-edit traces, large agent audit reports, or repeated agent workflows where evidence can be incomplete.
+
+        Bad fit: full app builds, spam/growth hacks, illegal scraping, account abuse, credential misuse, platform evasion, or one-off tasks nobody will run again.
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - $99 narrow audit workflow pack
+        - $299 setup + revision
+        - Not sure; recommend one
+    validations:
+      required: true
+  - type: dropdown
+    id: audit_surface
+    attributes:
+      label: Audit surface
+      options:
+        - PR review / code review receipt
+        - MCP or tool-call audit log
+        - Sensitive-file or safe-edit trace
+        - Large agent audit report
+        - Release / QA / deployment check
+        - Other repeated agent workflow
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow
+      description: What should the agent or tool do repeatedly?
+      placeholder: "Example: Run a PR review before commit and leave evidence of files reviewed, tests run, and unchecked claims."
+    validations:
+      required: true
+  - type: textarea
+    id: current_material
+    attributes:
+      label: Current prompt, SOP, repo rule, or tool log
+      description: Paste the closest current artifact. Messy is fine.
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success condition
+      description: What should be true when the workflow pack is useful?
+      placeholder: "Example: A reviewer can tell whether the agent actually checked risky files and whether test evidence is missing."
+    validations:
+      required: true
+  - type: textarea
+    id: receipt_fields
+    attributes:
+      label: Required receipt fields
+      description: List any fields you already know you need.
+      placeholder: "Example: files_reviewed, tests_run, checks_skipped, evidence_gaps, verdict."
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: This is one narrow audit/workflow problem, not a full app build.
+          required: true
+        - label: This request does not involve spam, evasion, illegal scraping, account abuse, or credential misuse.
+          required: true
