@@ -2,7 +2,8 @@
 
 ## Pilot
 
-I convert one repeated AI-agent workflow into a reusable workflow pack.
+Send me one prompt, checklist, or SOP you keep pasting into a coding agent.
+I turn it into repo files your team can reuse.
 
 Price:
 
@@ -22,15 +23,17 @@ Price:
 
 ## What Counts As Success
 
-The buyer can run the workflow again without rewriting the original long prompt, and there is a verification checklist for judging the result.
+You can run the task again without rewriting the original long prompt, and the
+agent has to report what it checked, skipped, and could not verify.
 
 ## Fit
 
 Good fit:
 
-- repeated prompt
-- repeated SOP
-- repeated QA/review/release workflow
+- repeated PR review prompt
+- repeated bugfix or reproduction SOP
+- repeated QA/release workflow
+- repeated safety rule such as "do not touch generated files or secrets"
 - clear expected output
 - clear rules the agent should follow
 
