@@ -271,6 +271,23 @@
 
       <section>
         <div class="wrap">
+          <h2>Example receipt</h2>
+          <p class="muted">This is the kind of small record a reviewer should get after the agent finishes.</p>
+          <pre>{
+  "workflow": "pr-review",
+  "subject": "PR #42",
+  "inputs_reviewed": ["diff", "changed files", "test output"],
+  "checks_run": ["unit tests"],
+  "checks_skipped": ["e2e tests"],
+  "evidence_gaps": ["no browser trace", "coverage report missing"],
+  "redaction_state": "not_needed",
+  "verdict": "incomplete"
+}</pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
           <h2>What you get back</h2>
           <div class="grid">
             <div class="card">
