@@ -223,6 +223,14 @@
                 <a class="button" href="mcp-team-audit-receipt.html">Open guide</a>
               </div>
             </article>
+            <article class="card">
+              <h3>Instruction diagnosis receipt</h3>
+              <p>Use when trace-backed feedback says a user instruction was ambiguous, underspecified, or missing evidence requirements.</p>
+              <span class="tag">trace-backed feedback</span><span class="tag">instruction quality</span><span class="tag">agent memory</span>
+              <div class="button-row">
+                <a class="button" href="https://raw.githubusercontent.com/MemoAsh/agent-workflow-pack/main/examples/safe-receipt-workflow/skills/safe-receipt/templates/instruction-diagnosis-receipt.json">Open JSON</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -259,6 +267,11 @@
                   <td>A team shares MCP or tool-call infrastructure and needs access/accountability records.</td>
                   <td>MCP team audit receipt</td>
                   <td>A team-specific receipt schema for identity, allowlist, redaction, and offboarding evidence.</td>
+                </tr>
+                <tr>
+                  <td>A trace-backed analyzer says the user's implementation instruction caused ambiguity or rework.</td>
+                  <td>Instruction diagnosis receipt</td>
+                  <td>A diagnosis contract with evidence refs, quote state, negative control, extractor source, and supported/weak/incomplete verdict.</td>
                 </tr>
               </tbody>
             </table>
