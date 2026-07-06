@@ -19,6 +19,7 @@ The workflow pack forces explicit safety boundaries and a machine-readable compl
 - `skills/safe-receipt/templates/audit-receipt.json` gives CI and audit tools a small machine-readable receipt shape
 - `skills/safe-receipt/templates/profile-exposure-receipt.json` checks whether a workflow requires a tool that is hidden by a restricted profile
 - `skills/safe-receipt/templates/large-audit-report-receipt.json` summarizes multi-agent audits with coverage, verifier verdicts, appendix publication state, and drift risk
+- `skills/safe-receipt/templates/instruction-diagnosis-receipt.json` records whether trace-backed instruction feedback is supported, weak, or incomplete
 - `skills/safe-receipt/verification.md` defines mandatory run-end checks
 
 ## Files
@@ -31,6 +32,7 @@ The workflow pack forces explicit safety boundaries and a machine-readable compl
 - [skills/safe-receipt/templates/audit-receipt.json](skills/safe-receipt/templates/audit-receipt.json)
 - [skills/safe-receipt/templates/profile-exposure-receipt.json](skills/safe-receipt/templates/profile-exposure-receipt.json)
 - [skills/safe-receipt/templates/large-audit-report-receipt.json](skills/safe-receipt/templates/large-audit-report-receipt.json)
+- [skills/safe-receipt/templates/instruction-diagnosis-receipt.json](skills/safe-receipt/templates/instruction-diagnosis-receipt.json)
 
 ## Pilot Scope (Recommended)
 
