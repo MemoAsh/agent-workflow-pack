@@ -68,6 +68,22 @@ body:
     validations:
       required: true
   - type: textarea
+    id: reviewer
+    attributes:
+      label: Who reviews the receipt?
+      description: Name the reviewer role, not private personal details.
+      placeholder: "Example: maintainer, client reviewer, internal platform team, security reviewer."
+    validations:
+      required: true
+  - type: textarea
+    id: next_run_result
+    attributes:
+      label: Useful result on the next real run
+      description: What would make this worth using the next time the workflow runs?
+      placeholder: "Example: The final receipt makes it obvious which risky files were checked and which claims stayed incomplete."
+    validations:
+      required: true
+  - type: textarea
     id: receipt_fields
     attributes:
       label: Required receipt fields
