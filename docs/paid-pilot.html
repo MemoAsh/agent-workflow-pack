@@ -229,6 +229,25 @@ templates/<receipt>.md or .json
 verification.md
 README.md with run and review instructions</pre>
 
+      <h2>Sample $99 deliverable</h2>
+      <p>
+        Example scope: turn a repeated PR review request into an audit workflow that can honestly say
+        which files were inspected, which checks ran, and what remains unverified.
+      </p>
+      <pre>pr-review-audit-pack/
+  AGENTS.md patch
+  skills/pr-review-audit/SKILL.md
+  skills/pr-review-audit/verification.md
+  templates/pr-review-receipt.json
+  README.md
+
+receipt fields:
+  files_reviewed
+  checks_run
+  checks_skipped
+  evidence_gaps
+  verdict: pass | fail | incomplete</pre>
+
       <h2>Good fit</h2>
       <ul>
         <li>PR/code review where "no issues found" needs evidence</li>
