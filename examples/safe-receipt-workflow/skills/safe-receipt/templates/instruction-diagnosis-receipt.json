@@ -1,0 +1,54 @@
+{
+  "receipt_type": "instruction_diagnosis",
+  "schema_version": "0.1",
+  "run": {
+    "diagnosis_id": "diag-2026-07-06-001",
+    "source": "local_monitor_raw_analysis",
+    "trace_scope": "single_trace",
+    "trace_ids": [
+      "trace-redacted-001"
+    ],
+    "raw_data_boundary": "local_only",
+    "repository_safe_output": true
+  },
+  "findings": [
+    {
+      "finding_id": "instruction-gap-001",
+      "category": "acceptance_criteria_missing",
+      "evidence_refs": [
+        "trace:redacted-001/span:redacted-08",
+        "turn:3"
+      ],
+      "evidence_quote_state": "sanitized",
+      "gap_summary": "The agent claimed completion before verifying the required evidence file existed.",
+      "suggested_instruction": "Before claiming completion, verify that required evidence files exist and list their paths in the final response.",
+      "negative_control": {
+        "method": "trace_swap_check",
+        "result": "fails_if_swapped_to_unrelated_trace"
+      },
+      "extractor_source": "prompt_only",
+      "verdict": "supported"
+    }
+  ],
+  "coverage": {
+    "categories_checked": [
+      "goal_clarity",
+      "scope_boundary",
+      "acceptance_criteria",
+      "test_requirements",
+      "evidence_requirements",
+      "task_size"
+    ],
+    "categories_with_findings": [
+      "acceptance_criteria"
+    ],
+    "unobservable_categories": []
+  },
+  "safety": {
+    "raw_prompt_published": false,
+    "raw_tool_results_published": false,
+    "pii_or_secret_state": "not_published",
+    "local_paths_state": "sanitized"
+  },
+  "verdict": "supported"
+}
